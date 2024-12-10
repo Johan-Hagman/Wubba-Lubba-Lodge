@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFD700; /* Gul färg */
+    padding: 10px 20px;
+  }
+
+  .navbar .logo {
+    height: 50px;
+  }
+
+  .hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-section img {
+    width: 100%;
+    display: block;
+  }
+
+  .cta-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #800080; /* Lila färg */
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background-color: #5A005A;
+  }
