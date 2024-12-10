@@ -1,19 +1,30 @@
+.header {
+    text-align: center; /* Centrera texten */
+        text-shadow: 0 0 10px var(--primary-color), /* Neon-effekt */
+                     0 0 20px var(--primary-color), 
+                     0 0 30px var(--primary-color);
+        margin: 20px 0; /* Avstånd från andra element */
+        letter-spacing: 2px; /* Gör texten luftigare */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFD700; /* Gul färg */
-    padding: 10px 20px;
+    flex-direction: row-reverse;
+    background-color:var(--secondary-color); /* Gul färg */
   }
 
   .navbar .logo {
-    height: 50px;
+    height: 100px;
   }
 
   .hero-section {
     position: relative;
-    text-align: center;
+    /* text-align: center; */
     color: white;
+    position: relative;
+    text-align: left;
   }
 
   .hero-section img {
@@ -24,15 +35,18 @@
   .cta-button {
     position: absolute;
     bottom: 20px;
-    left: 50%;
+    top: 50%; /* Centrera vertikalt */
+    left: 10%; /* Flytta till vänster */
     transform: translateX(-50%);
-    background-color: #800080; /* Lila färg */
+    background-color:var(--primary-color); /* Lila färg */
     color: white;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 32px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    height: 100px;
+    width: 275px;
   }
 
   .cta-button:hover {
