@@ -37,9 +37,5 @@ foreach ($bookings as $booking) {
     );
 }
 
-
-
-
-
 // Visa kalender
 echo $calendar->draw();
