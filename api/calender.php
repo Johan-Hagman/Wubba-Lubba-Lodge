@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../api/database.php';
 
@@ -26,16 +29,26 @@ foreach ($bookings as $booking) {
 // Generera kalender för januari 2025
 $calendar = new Calendar(2025, 1);
 
-// Lägg till bokade datum med visuell indikation
+// Lägg till bokade datum utan CSS
 foreach ($bookings as $booking) {
     $calendar->addEvent(
-        $booking['check_in_date'], // Startdatum från databasen
-        $booking['check_out_date'], // Slutdatum från databasen
-        'Bokad', // Namnet på evenemanget
-        true, // Markera som ett markerat datum
-        ['booked-date'] // CSS-klass för styling
+        $booking['check_in_date'],
+        $booking['check_out_date'],
+        'Bokad' // Namnet på evenemanget
     );
 }
 
-// Visa kalender
-echo $calendar->draw();
+// Generera HTML för kalendern
+$calendarHTML = $calendar->draw();
+
+// Lägg till CSS-klasser för bokade datum i den genererade HTML-koden
+foreach ($bookedDates as $date) {
+    $calendarHTML = str_replace(
+        ">$date<",
+        " class='booked-date'>$date<",
+        $calendarHTML
+    );
+}
+
+// Visa kalender med markerade datum
+echo $calendarHTML;

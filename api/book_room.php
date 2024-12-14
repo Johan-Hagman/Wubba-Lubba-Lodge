@@ -1,11 +1,15 @@
 <?php
+
+declare(strict_types=1);
+
 require __DIR__ . '/../api/database.php';
 
-$room_id = (int)$_POST['room_id'];
-$guest_name = trim($_POST['guest_name']);
-$check_in_date = $_POST['check_in_date'];
-$check_out_date = $_POST['check_out_date'];
-$transfer_code = trim($_POST['transfer_code']);
+$room_id = isset($_POST['room_id']) ? (int)$_POST['room_id'] : null;
+$guest_name = htmlspecialchars(trim($_POST['guest_name'] ?? ''));
+$check_in_date = htmlspecialchars(trim($_POST['check_in_date'] ?? ''));
+$check_out_date = htmlspecialchars(trim($_POST['check_out_date'] ?? ''));
+$transfer_code = htmlspecialchars(trim($_POST['transfer_code'] ?? ''));
+
 
 // Validera inmatning
 if (empty($guest_name) || empty($check_in_date) || empty($check_out_date) || empty($transfer_code)) {
