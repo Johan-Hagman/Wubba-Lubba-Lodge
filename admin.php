@@ -50,7 +50,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </tbody>
     </table>
-    <form method="POST" action="logout.php">
+    <form method="POST" action="users/logout.php">
         <button type="submit">Logga ut</button>
     </form>
 </body>
