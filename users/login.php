@@ -19,5 +19,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
-    <button onclick="location.href='index.html';">Back to startpage</button>
+    <button onclick="location.href='/../index.html';">Back to startpage</button>
 </form>
