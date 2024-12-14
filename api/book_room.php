@@ -47,6 +47,28 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $r
     die("Transfer code does not cover the room price. Required: $room_price, Available: " . $validationResult['totalCost']);
 }
 
+// Konsumera transferkoden och sätt in pengarna
+$username = 'Johan'; // Ersätt med ditt användarnamn
+$numberOfDays = (new DateTime($check_out_date))->diff(new DateTime($check_in_date))->days;
+
+$depositResult = consumeTransferCode($username, $transfer_code, $numberOfDays);
+
+// Logga responsen
+logApiResponse($pdo, '/centralbank/deposit', [
+    'user' => $username,
+    'transferCode' => $transfer_code,
+    'numberOfDays' => $numberOfDays
+], $depositResult);
+
+// Hantera responsen från /deposit
+if (isset($depositResult['error'])) {
+    die("Deposit failed: " . $depositResult['error']);
+}
+
+if (!isset($depositResult['status']) || $depositResult['status'] !== 'success') {
+    die('Failed to deposit transfer code.');
+}
+
 // Kontrollera datum
 if ($check_in_date < '2025-01-01' || $check_out_date > '2025-01-31' || $check_in_date >= $check_out_date) {
     die('Invalid date range.');
