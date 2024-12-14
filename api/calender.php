@@ -21,13 +21,14 @@ foreach ($bookings as $booking) {
     $start = new DateTime($booking['check_in_date']);
     $end = new DateTime($booking['check_out_date']);
     while ($start <= $end) {
-        $bookedDates[] = $start->format('Y-m-d');
+        $bookedDates[] = $start->format('j'); // Endast dagen (1-31)
         $start->modify('+1 day');
     }
 }
 
 // Generera kalender för januari 2025
 $calendar = new Calendar(2025, 1);
+$calendar->stylesheet();
 
 // Lägg till bokade datum utan CSS
 foreach ($bookings as $booking) {
@@ -41,11 +42,10 @@ foreach ($bookings as $booking) {
 // Generera HTML för kalendern
 $calendarHTML = $calendar->draw();
 
-// Lägg till CSS-klasser för bokade datum i den genererade HTML-koden
 foreach ($bookedDates as $date) {
-    $calendarHTML = str_replace(
-        ">$date<",
-        " class='booked-date'>$date<",
+    $calendarHTML = preg_replace(
+        '/<div class="cal-day-box">(' . $date . ')<\/div>/',
+        '<div class="cal-day-box booked-date">$1</div>',
         $calendarHTML
     );
 }
