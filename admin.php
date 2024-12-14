@@ -37,20 +37,22 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($logs as $log): ?>
                 <tr>
-                    <td><?= htmlspecialchars($log['id']) ?></td>
-                    <td><?= htmlspecialchars($log['endpoint']) ?></td>
+                    <td><?= htmlspecialchars($log['id'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($log['endpoint'] ?? '') ?></td>
                     <td>
-                        <pre><?= htmlspecialchars($log['request_data']) ?></pre>
+                        <pre><?= htmlspecialchars($log['request_data'] ?? '') ?></pre>
                     </td>
                     <td>
-                        <pre><?= htmlspecialchars($log['response_data']) ?></pre>
+                        <pre><?= htmlspecialchars($log['response_data'] ?? '') ?></pre>
                     </td>
-                    <td><?= htmlspecialchars($log['created_at']) ?></td>
+                    <td><?= htmlspecialchars($log['created_at'] ?? '') ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-    <button onclick="location.href='index.html';">Back to startpage</button>
+    <form method="POST" action="logout.php">
+        <button type="submit">Logga ut</button>
+    </form>
 </body>
 
 </html>

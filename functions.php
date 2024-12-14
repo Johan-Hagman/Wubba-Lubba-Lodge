@@ -11,11 +11,22 @@ function validateTransferCode(string $transferCode, float $totalCost): array
         'totalcost' => $totalCost
     ];
 
+
+    $jsonData = json_encode($data, JSON_PRETTY_PRINT);
+    if ($jsonData === false) {
+        die("JSON encoding failed: " . json_last_error_msg());
+    }
+    // echo "<pre>JSON Sent: $jsonData</pre>";
+
+
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Accept: application/json',
+    ]);
 
     $response = curl_exec($ch);
 
@@ -50,10 +61,10 @@ function consumeTransferCode(string $username, string $transferCode, int $number
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data)); // Skicka som JSON
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Accept: application/json'
+        'Accept: application/json',
+        'Content-Type: application/json' // Ändrat tillbaka till JSON
     ]);
 
     $response = curl_exec($ch);
@@ -66,7 +77,8 @@ function consumeTransferCode(string $username, string $transferCode, int $number
 
     curl_close($ch);
 
-    // Försök att tolka JSON-svaret
+    echo "<pre>Raw API Response: $response</pre>";
+
     $decodedResponse = json_decode($response, true);
 
     if ($decodedResponse === null) {
