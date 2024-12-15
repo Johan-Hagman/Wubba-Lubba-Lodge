@@ -65,8 +65,8 @@ if (isset($depositResult['error'])) {
     die("Deposit failed: " . $depositResult['error']);
 }
 
-if (!isset($depositResult['status']) || $depositResult['status'] !== 'success') {
-    die('Failed to deposit transfer code.');
+if (!isset($depositResult['message']) || stripos($depositResult['message'], 'success') === false) {
+    die('Failed to deposit transfer code. Error: ' . ($depositResult['message'] ?? 'Unknown error.'));
 }
 
 // Kontrollera datum

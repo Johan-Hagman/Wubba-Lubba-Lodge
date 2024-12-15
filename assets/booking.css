@@ -1,6 +1,78 @@
-.booked-date {
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    text-align: center;
+
+
+.form-container {
+    display: flex;
+    justify-content: flex-start;
 }
+
+/* Grundläggande styling för formuläret */
+form {
+    background-color: #ffffff; /* Vit bakgrund */
+    border: 1px solid #dddddd; /* Ljusgrå kantlinje */
+    border-radius: 8px; /* Rundade hörn */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Skugga för djup */
+    max-width: 500px;
+    margin: 20px auto; /* Centrerar formuläret */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Rubrik för formuläret */
+form h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #005f73; /* Mörkblå text */
+    margin-bottom: 20px;
+}
+
+/* Styling för etiketter */
+form label {
+    display: block;
+    font-size: 1rem;
+    color: #333333; /* Mörk text */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Styling för inputs och select */
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333333;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #f4f4f4;
+    transition: all 0.3s ease-in-out;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #005f73; /* Mörkblå kant vid fokus */
+    outline: none;
+    background-color: #e0f7fa; /* Ljusblå bakgrund vid fokus */
+}
+
+/* Styling för knappen */
+form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0a9396; /* Turkos knapp */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: #005f73; /* Mörkare blå vid hover */
+    transform: scale(1.05); /* Förstorar lite */
+}
+
+
