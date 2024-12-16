@@ -36,6 +36,7 @@ foreach ($rooms as $room) {
 
     // Skapa kalender för januari 2025
     $calendar = new Calendar(2025, 1);
+    $calendar->useMondayStartingDate();
     $calendar->stylesheet();
     $calendarHTML = $calendar->draw();
 
