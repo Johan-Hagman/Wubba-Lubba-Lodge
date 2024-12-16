@@ -38,7 +38,7 @@ foreach ($rooms as $room) {
     $calendar = new Calendar(2025, 1);
     $calendar->useMondayStartingDate();
     $calendar->stylesheet();
-    $calendarHTML = $calendar->draw();
+    $calendarHTML = $calendar->draw(date('2025-01-01'));
 
     // Modifiera kalendern för att lägga till `booked-date`
     $bookedDays = []; // Array för att lagra bokade datum
