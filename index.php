@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="stylesheet" href="/assets/header.css">
+  <link rel="stylesheet" type="text/css" href="/vendor/benhall14/php-calendar/html/css/calendar.min.css">
   <link rel="stylesheet" href="/assets/booking.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
