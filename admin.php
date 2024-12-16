@@ -45,7 +45,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($rooms as $room): ?>
             <form method="POST" action="admin.php">
                 <h3><?php echo htmlspecialchars($room['type']); ?></h3>
-                <label for="price_<?php echo $room['id']; ?>">Nuvarande pris: <?php echo number_format($room['price'], 2); ?></label><br>
+                <label for="price_<?php echo $room['id']; ?>">Nuvarande pris: <?php echo number_format($room['price'], 2); ?>$</label><br>
                 <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
                 <input type="number" step="0.01" name="price" id="price_<?php echo $room['id']; ?>" value="<?php echo $room['price']; ?>" required>
                 <button type="submit">Uppdatera Pris</button>
