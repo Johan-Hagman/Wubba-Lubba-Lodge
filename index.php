@@ -6,9 +6,6 @@
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="stylesheet" href="/assets/header.css">
   <link rel="stylesheet" href="/assets/booking.css">
-  <!-- <link rel="stylesheet" type="text/css" href="booking.css"> -->
-
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -33,7 +30,6 @@
   </div>
 
   <section>
-
     <!-- Kalendern -->
     <section id="calendar">
       <?php include 'api/calender.php'; ?>
@@ -65,6 +61,7 @@
       </form>
     </div>
   </section>
+
   <script src="/assets/script.js"></script>
 </body>
 
