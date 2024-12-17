@@ -18,17 +18,23 @@ if (!$rooms) {
 
 // Array för att lagra hårdkodade bilder och beskrivningar
 $roomDetails = [
-    'Budget Room' => [
-        'image' => '/assets/standard-room.jpg',
-        'description' => 'A cozy and simple budget-friendly room for travelers looking for a comfortable stay.',
+    'budget' => [
+        'image' => '/../assets/budget-room.jpg',
+        'description' => 'Welcome to Rick’s Rusty Garage, the ultimate budget-friendly crash pad where scrap parts
+         and ‘borrowed’ tech create a rugged, interdimensional vibe. It’s the perfect no-frills spot for adventurers
+          who don’t mind a little grease with their comfort!',
     ],
-    'Standard Room' => [
-        'image' => 'path/to/standard-room.jpg',
-        'description' => 'A perfect blend of comfort and style for a relaxing stay.',
+    'standard' => [
+        'image' => '/../assets/standard-room.jpg',
+        'description' => 'Tucked away in the heart of the multiverse,
+         Rick’s Cozy Retreat is a warm escape from interdimensional chaos,
+          featuring plush furnishings and soft lighting. It’s the perfect spot to unwind in style,
+           where coziness meets sophistication!',
     ],
-    'Luxury Room' => [
-        'image' => 'path/to/luxury-room.jpg',
-        'description' => 'An exquisite space offering ultimate luxury and elegance.',
+    'luxury' => [
+        'image' => '/../assets/luxury-room.jpg',
+        'description' => 'Welcome to The Reverie Throne, where your imagination takes the wheel.
+         Yes, it’s just one chair—but sit down, relax, and choose your dreams… just don’t ask how it works.',
     ],
 ];
 

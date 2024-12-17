@@ -45,22 +45,32 @@ if (!is_array($validationResult)) {
 }
 
 if (isset($validationResult['error'])) {
-    die("API error: " . $validationResult['error']);
+    die('<div style="text-align: center; font-family: Arial, sans-serif;">
+    <p style="color: red;">Invalid or insufficient transfer code.</p>
+    <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+</div>');
 }
 
 if (!isset($validationResult['status']) || $validationResult['status'] !== 'success') {
-    die('Invalid or insufficient transfer code.');
+    die('<div style="text-align: center; font-family: Arial, sans-serif;">
+    <p style="color: red;">Invalid or insufficient transfer code.</p>
+    <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+</div>');
 }
 
 if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $totalCost) {
-    die("Transfer code does not cover the room cost. Required: $totalCost, Available: " . $validationResult['totalCost']);
+    die('<div style="text-align: center; font-family: Arial, sans-serif;">
+    <p style="color: red;">Transfer code does not cover the room cost.</p>
+    <p>Required: $' . $totalCost . ', Available: $' . $validationResult['totalCost'] . '</p>
+    <img src="/../assets/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
+</div>');
 }
 
 // Konsumera transferkoden och sätt in pengarna
 $username = 'Johan'; // Ersätt med ditt användarnamn
 $depositResult = consumeTransferCode($username, $transfer_code, $totalCost);
 
-logApiResponse($pdo, '/centralbank/deposit', [
+logApiResponse($pdo, '/centralbank/depot.php', [
     'user' => $username,
     'transferCode' => $transfer_code,
     'totalCost' => $totalCost
