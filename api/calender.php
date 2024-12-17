@@ -16,6 +16,22 @@ if (!$rooms) {
     exit;
 }
 
+// Array för att lagra hårdkodade bilder och beskrivningar
+$roomDetails = [
+    'Budget Room' => [
+        'image' => '/assets/standard-room.jpg',
+        'description' => 'A cozy and simple budget-friendly room for travelers looking for a comfortable stay.',
+    ],
+    'Standard Room' => [
+        'image' => 'path/to/standard-room.jpg',
+        'description' => 'A perfect blend of comfort and style for a relaxing stay.',
+    ],
+    'Luxury Room' => [
+        'image' => 'path/to/luxury-room.jpg',
+        'description' => 'An exquisite space offering ultimate luxury and elegance.',
+    ],
+];
+
 // Loop för att generera en kalender för varje rum
 foreach ($rooms as $room) {
     $roomId = $room['id'];
@@ -69,9 +85,20 @@ foreach ($rooms as $room) {
         $calendarHTML
     );
 
-    // Visa kalender för rummet
-    echo "<div class='calendar-container'>";
-    echo "<h2>$roomName</h2>"; // Visa rummets namn som rubrik
-    echo $calendarHTML; // Skriv ut den modifierade kalendern
+
+    // Hämta bild och beskrivning baserat på rummets namn
+    $image = $roomDetails[$roomName]['image'] ?? 'path/to/default-room.jpg';
+    $description = $roomDetails[$roomName]['description'] ?? 'No description available.';
+
+    // Visa kalender, bild och beskrivning
+    echo "<div class='calendar-item'>";
+    echo "<div class='calendar'>";
+    echo "<h2>$roomName</h2>"; // Visa rummets namn
+    echo $calendarHTML; // Visa kalender
+    echo "</div>";
+    echo "<div class='info'>";
+    echo "<img src='$image' alt='$roomName' />";
+    echo "<p>$description</p>";
+    echo "</div>";
     echo "</div>";
 }

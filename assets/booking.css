@@ -1,3 +1,58 @@
+.calendar-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.calendar-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; /* Täcker hela raden */
+}
+
+.calendar {
+    width: 40%; /* Kalendern täcker hela behållarens bredd */
+    box-sizing: border-box; /* Inkludera padding i breddberäkningen */
+    padding: 10px; /* Jämn padding för bättre utseende */
+}
+
+.info {
+    width: 60%; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.info img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.info p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.calendar table {
+    width: 100%; /* Tabellkalender fyller hela sin behållare */
+    border-collapse: collapse; /* Ta bort mellanrum mellan cellerna */
+}
+
+.calendar .cal-day-box {
+    width: auto; /* Justera kolumnbredd dynamiskt */
+    height: 50px; /* Fast höjd för att undvika hoptryckning */
+    text-align: center;
+    line-height: 50px; /* Centrera text vertikalt */
+}
 
 /* Grundläggande styling för formuläret */
 form {
@@ -57,7 +112,7 @@ form button {
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    background-color: #0a9396; /* Turkos knapp */
+    background-color: var(--primary-color ); /* Turkos knapp */
     border: none;
     border-radius: 4px;
     cursor: pointer;
