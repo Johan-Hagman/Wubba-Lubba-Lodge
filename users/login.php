@@ -1,22 +1,30 @@
 <?php
 session_start();
+// Load environment variables
+require __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+// Retrieve the API key from the environment
+$apiKeyFromEnv = $_ENV['API_KEY'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['password']);
+    $apiKey = htmlspecialchars($_POST['api_key']);
 
-    if ($username === 'Johan' && $password === '1010') {
+    // Check if the entered API key matches the one from the environment
+    if ($apiKey === $apiKeyFromEnv) {
         $_SESSION['is_admin'] = true;
         header('Location: /admin.php');
         exit;
     } else {
-        echo 'Invalid credentials.';
+        echo 'Invalid API Key.';
     }
 }
 ?>
 
 <form method="POST">
-    <input type="text" name="username" placeholder="Username" required>
+    <input type="text" name="api_key" placeholder="Enter your API Key" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
     <button onclick="location.href='/../index.php';">Back to startpage</button>

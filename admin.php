@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-// Kontrollera att användaren är inloggad som admin
+// Kontrollera om användaren är autentiserad
 if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    die('Access denied.');
+    header('Location: /users/login.php'); // Skicka användaren tillbaka till login
+    exit;
 }
 
 require __DIR__ . '/api/database.php';

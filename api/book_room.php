@@ -67,7 +67,7 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $t
 }
 
 // Konsumera transferkoden och sätt in pengarna
-$username = 'Johan'; // Ersätt med ditt användarnamn
+$username = 'Johan';
 $depositResult = consumeTransferCode($username, $transfer_code, $totalCost);
 
 logApiResponse($pdo, '/centralbank/depot.php', [
@@ -121,7 +121,7 @@ if ($stmt->execute([
         "arrival_date" => $check_in_date,
         "departure_date" => $check_out_date,
         "total_cost" => "$" . $totalCost,
-        "stars" => "to be announced",
+        "stars" => "5",
         "features" => [
             [
                 "name" => "tba",
