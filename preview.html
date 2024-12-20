@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background:#00ff00 ;
+            color: #fff;
+            text-align: center;
+            background-size: cover; /* Gör så att bilden täcker hela skärmen */
+    background-repeat: no-repeat; /* Undvik att bilden upprepas */
+    background-position: center; /* Centrera bilden */
+    height: 100vh; /* Sätt höjden på body till 100% av viewport-höjden */
+    margin: 0; /* Ta bort eventuell margin */
+            background: url(/assets/preview.webp);
+        }
+
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown {
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Multiverse!</h1>
+    </header>
+
+    <div class="portal"></div>
+
+    <div class="message">When guests show up before check-in and Rick’s not having it. Coming soon: Wubba Lubba Lodge – where the adventure starts at check-in!</div>
+
+    <div class="countdown" id="countdown">Loading...</div>
+
+    <footer>
+        <p>&copy; 2024 - Designed for Multiversal Travelers</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown');
+        const launchDate = new Date('2025-01-01T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            if (timeLeft <= 0) {
+                countdownElement.textContent = 'The Hotel is Live!';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
