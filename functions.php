@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require __DIR__ . '/api/database.php';
+
 function validateTransferCode(string $transferCode, float $totalCost): array
 {
     $url = 'https://www.yrgopelago.se/centralbank/transferCode';
@@ -91,3 +93,29 @@ function logApiResponse(PDO $pdo, string $endpoint, array $requestData, array $r
         ':response_data' => json_encode($responseData, JSON_PRETTY_PRINT),
     ]);
 }
+
+function getAvailableRooms(PDO $pdo): array
+{
+    try {
+        $stmt = $pdo->query("SELECT id, type, price FROM rooms");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error fetching rooms: " . $e->getMessage());
+    }
+}
+
+function getAvailableFeatures(PDO $pdo): array
+{
+    try {
+        $stmt = $pdo->query("SELECT * FROM features");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error fetching features: " . $e->getMessage());
+    }
+}
+
+// Hämta rum genom funktionen
+$rooms = getAvailableRooms($pdo);
+
+// Hämta alla tillgängliga features
+$features = getAvailableFeatures($pdo);

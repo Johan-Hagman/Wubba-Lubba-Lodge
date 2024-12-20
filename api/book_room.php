@@ -10,6 +10,7 @@ $guest_name = htmlspecialchars(trim($_POST['guest_name'] ?? ''));
 $check_in_date = htmlspecialchars(trim($_POST['check_in_date'] ?? ''));
 $check_out_date = htmlspecialchars(trim($_POST['check_out_date'] ?? ''));
 $transfer_code = htmlspecialchars(trim($_POST['transfer_code'] ?? ''));
+$selected_features = $_POST['features'] ?? [];
 
 if (empty($room_id) || empty($guest_name) || empty($check_in_date) || empty($check_out_date) || empty($transfer_code)) {
     die('All fields are required.');
@@ -37,6 +38,22 @@ $numberOfNights = $check_in->diff($check_out)->days;
 // Beräkna totalkostnaden
 $totalCost = $numberOfNights * $room_price;
 
+// Hämta alla valda features från databasen
+if (!empty($selected_features)) {
+    $placeholders = implode(',', array_fill(0, count($selected_features), '?'));
+    $stmt = $pdo->prepare("SELECT id, name, price FROM features WHERE id IN ($placeholders)");
+    $stmt->execute($selected_features);
+    $features = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Lägg till kostnaden för features till totalen
+    foreach ($features as $feature) {
+        $totalCost += $feature['price'];
+    }
+} else {
+    $features = []; // Om inga features är valda
+}
+
+
 // Validera transferkoden baserat på totalkostnaden
 $validationResult = validateTransferCode($transfer_code, $totalCost);
 
@@ -48,6 +65,8 @@ if (isset($validationResult['error'])) {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
     <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <br> <br>
+    <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
 }
 
@@ -55,6 +74,8 @@ if (!isset($validationResult['status']) || $validationResult['status'] !== 'succ
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
     <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <br> <br>
+     <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
 }
 
@@ -115,6 +136,15 @@ if ($stmt->execute([
     ':check_out_date' => $check_out_date,
     ':transfer_code' => $transfer_code
 ])) {
+    // Hämta det senaste boknings-ID:t
+    $bookingId = $pdo->lastInsertId();
+
+    // Spara valda features i `booking_features`
+    $stmt = $pdo->prepare("INSERT INTO booking_features (booking_id, feature_id) VALUES (?, ?)");
+    foreach ($selected_features as $featureId) {
+        $stmt->execute([$bookingId, $featureId]);
+    }
+} {
     $response = [
         "island" => "Squanche Isle",
         "hotel" => "Wubba Lubba Lodge",
@@ -122,21 +152,14 @@ if ($stmt->execute([
         "departure_date" => $check_out_date,
         "total_cost" => "$" . $totalCost,
         "stars" => "5",
-        "features" => [
-            [
-                "name" => "tba",
-                "cost" => "null"
-            ]
-        ],
+        "features" => $features,
         "additional_info" => [
             "greeting" => "Thank you for choosing Wubba Lubba Lodge",
-            "imageUrl" => "https://giphy.com/gifs/adultswim-liBsVeLILcyaY"
+            "imageUrl" => "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW00amFhMnAwZnB0ZDQxcjJoeWEyZGZ3M2dzMXExMXA1M3RpbWw4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/liBsVeLILcyaY/giphy.gif"
         ]
     ];
 
     header('Content-Type: application/json');
     echo json_encode($response, JSON_PRETTY_PRINT);
     exit;
-} else {
-    die('Booking failed.');
 }
