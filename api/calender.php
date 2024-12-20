@@ -8,10 +8,10 @@ require __DIR__ . '/../api/database.php';
 use benhall14\phpCalendar\Calendar;
 
 // Hämta alla rum från databasen
-$roomsStmt = $pdo->query("SELECT id, type FROM rooms");
-$rooms = $roomsStmt->fetchAll(PDO::FETCH_ASSOC);
+$calendarRoomsStmt = $pdo->query("SELECT id, type FROM rooms");
+$calendarRooms = $calendarRoomsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$rooms) {
+if (!$calendarRooms) {
     echo "Inga rum hittades i databasen.";
     exit;
 }
@@ -39,7 +39,7 @@ $roomDetails = [
 ];
 
 // Loop för att generera en kalender för varje rum
-foreach ($rooms as $room) {
+foreach ($calendarRooms as $room) {
     $roomId = $room['id'];
     $roomName = $room['type'];
 

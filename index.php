@@ -1,3 +1,8 @@
+<?php
+require __DIR__ . '/api/database.php';
+require __DIR__ . '/functions.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -30,40 +35,66 @@
     <button class="cta-button">Book Now!</button>
   </div>
 
-  <section>
-    <!-- Kalendern -->
-    <section id="calendar">
-      <?php include 'api/calender.php'; ?>
-    </section>
 
+  <!-- Kalendern -->
+  <section id="calendar">
+    <?php include 'api/calender.php'; ?>
+  </section>
+  <section class="booking">
     <div class="form-container">
-      <!-- Formulär för att boka ett rum -->
+      <!-- Formulär för att boka ett rum och välja features -->
       <form action="/api/book_room.php" method="POST">
-        <label for="room_id">Room ID:</label>
+        <!-- Room selection -->
         <select id="room_id" name="room_id" required>
-          <option value="1">Budget Room</option>
-          <option value="2">Standard Room</option>
-          <option value="3">Luxury Room</option>
+          <?php
+          foreach ($rooms as $room): ?>
+            <option value="<?php echo $room['id']; ?>"
+              data-price="<?php echo isset($room['price']) ? $room['price'] : 0; ?>">
+              <?php echo htmlspecialchars($room['type']) . " ({$room['price']}$/night)"; ?>
+            </option>
+          <?php endforeach; ?>
+
         </select><br><br>
 
+        <!-- Check-in and Check-out dates -->
         <label for="check_in_date">Check-In Date:</label>
         <input type="date" id="check_in_date" name="check_in_date" min="2025-01-01" max="2025-01-31" required><br><br>
 
         <label for="check_out_date">Check-Out Date:</label>
         <input type="date" id="check_out_date" name="check_out_date" min="2025-01-01" max="2025-01-31" required><br><br>
 
+        <!-- Guest Name -->
         <label for="guest_name">Guest Name:</label>
         <input type="text" id="guest_name" name="guest_name" required><br><br>
 
+        <!-- Transfer Code -->
         <label for="transfer_code">Transfer Code:</label>
         <input type="text" id="transfer_code" name="transfer_code" required><br><br>
 
+        <!-- Features selection -->
+        <h2>Select Features</h2>
+        <?php foreach ($features as $feature): ?>
+          <div>
+            <input type="checkbox" id="feature-<?php echo $feature['id']; ?>"
+              name="features[]"
+              value="<?php echo $feature['id']; ?>"
+              data-price="<?php echo isset($feature['price']) ? $feature['price'] : 0; ?>">
+            <label for="feature-<?php echo $feature['id']; ?>">
+              <?php echo htmlspecialchars($feature['name']) . " (Price: {$feature['price']}$)"; ?>
+            </label>
+          </div>
+        <?php endforeach; ?>
+
+        <!-- Total Cost -->
+        <p><strong>Total Cost:</strong> <span id="total-cost">0</span> $</p>
         <button type="submit">Book Now</button>
       </form>
     </div>
   </section>
 
+
   <script src="/assets/script.js"></script>
+
 </body>
 
 </html>
