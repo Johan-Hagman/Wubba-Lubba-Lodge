@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: /admin.php');
         exit;
     } else {
-        echo 'Invalid API Key.';
+        echo 'Well, that’s just perfect! Let’s add it to the list of things that have gone horribly wrong today!';
     }
 }
 ?>
