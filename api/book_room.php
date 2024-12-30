@@ -35,8 +35,20 @@ $check_in = new DateTime($check_in_date);
 $check_out = new DateTime($check_out_date);
 $numberOfNights = $check_in->diff($check_out)->days;
 
+// Hämta rabattprocenten från databasen
+$stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
+$stmt->execute();
+$discountPercentage = (int)$stmt->fetchColumn();
+
+if ($numberOfNights >= 3) {
+    $discountAmount = ($numberOfNights * $room_price) * ($discountPercentage / 100);
+} else {
+    $discountAmount = 0;
+}
+
+
 // Beräkna totalkostnaden
-$totalCost = $numberOfNights * $room_price;
+$totalCost = ($numberOfNights * $room_price) - $discountAmount;
 
 // Hämta alla valda features från databasen
 if (!empty($selected_features)) {
@@ -52,7 +64,6 @@ if (!empty($selected_features)) {
 } else {
     $features = []; // Om inga features är valda
 }
-
 
 // Validera transferkoden baserat på totalkostnaden
 $validationResult = validateTransferCode($transfer_code, $totalCost);
@@ -89,9 +100,9 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $t
 
 // Konsumera transferkoden och sätt in pengarna
 $username = 'Johan';
-$depositResult = consumeTransferCode($username, $transfer_code, $totalCost);
+$depositResult = consumeTransferCode($username, $transfer_code, intval($totalCost));
 
-logApiResponse($pdo, '/centralbank/depot.php', [
+logApiResponse($pdo, '/centralbank/deposit', [
     'user' => $username,
     'transferCode' => $transfer_code,
     'totalCost' => $totalCost
@@ -101,8 +112,8 @@ if (isset($depositResult['error'])) {
     die("Deposit failed: " . $depositResult['error']);
 }
 
-if (!isset($depositResult['message']) || stripos($depositResult['message'], 'success') === false) {
-    die('Failed to deposit transfer code. Error: ' . ($depositResult['message'] ?? 'Unknown error.'));
+if (!isset($depositResult['status']) || stripos($depositResult['status'], 'success') === false) {
+    die('Failed to deposit transfer code. Error: ' . ($depositResult['status'] ?? 'Unknown error.'));
 }
 
 // Kontrollera tillgänglighet

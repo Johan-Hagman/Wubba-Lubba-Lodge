@@ -9,6 +9,52 @@ if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
 
 require __DIR__ . '/api/database.php';
 
+// Hämta nuvarande rabatt från databasen
+$stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
+$stmt->execute();
+$currentDiscount = $stmt->fetchColumn();
+
+// Uppdatera priser i databasen om formuläret skickas
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['room_id']) && isset($_POST['price'])) {
+        // Uppdatera pris för ett rum
+        $roomId = $_POST['room_id'];
+        $newPrice = $_POST['price'];
+
+        $stmt = $pdo->prepare("UPDATE rooms SET price = :price WHERE id = :id");
+        $stmt->execute(['price' => $newPrice, 'id' => $roomId]);
+
+        echo "Priset för rummet har uppdaterats!<br>";
+    }
+
+    if (isset($_POST['feature_id']) && isset($_POST['feature_price'])) {
+        // Uppdatera pris för en feature
+        $featureId = $_POST['feature_id'];
+        $newFeaturePrice = $_POST['feature_price'];
+
+        $stmt = $pdo->prepare("UPDATE features SET price = :price WHERE id = :id");
+        $stmt->execute(['price' => $newFeaturePrice, 'id' => $featureId]);
+
+        echo "Priset för featuren har uppdaterats!<br>";
+    }
+
+    if (isset($_POST['discount_percentage'])) {
+        // Uppdatera rabatt
+        $newDiscount = (int)$_POST['discount_percentage'];
+
+        // Validera att rabattprocenten är mellan 0 och 100
+        if ($newDiscount < 0 || $newDiscount > 100) {
+            echo "<p style='color: red;'>Discount must be between 0 and 100.</p>";
+        } else {
+            $stmt = $pdo->prepare("UPDATE settings SET value = :value WHERE name = 'discount_percentage'");
+            $stmt->execute([':value' => $newDiscount]);
+
+            echo "<p style='color: green;'>Discount updated to $newDiscount%!</p>";
+            $currentDiscount = $newDiscount; // Uppdatera lokalt för att visa det nya värdet direkt
+        }
+    }
+}
+
 // Uppdatera priser i databasen om formuläret skickas
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['room_id']) && isset($_POST['price'])) {
@@ -48,6 +94,8 @@ $stmt = $pdo->query("SELECT * FROM api_logs ORDER BY created_at DESC");
 $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,6 +132,14 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </form>
             <hr>
         <?php endforeach; ?>
+
+        <!-- Formulär för att uppdatera rabatt -->
+        <h2>Update Discount Percentage</h2>
+        <form method="POST" action="admin.php">
+            <label for="discount_percentage">Current Discount: <?php echo htmlspecialchars($currentDiscount); ?>%</label><br>
+            <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?php echo htmlspecialchars($currentDiscount); ?>" required>
+            <button type="submit">Update Discount</button>
+        </form>
 
     </section>
 
