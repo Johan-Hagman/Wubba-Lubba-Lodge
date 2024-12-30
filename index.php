@@ -21,19 +21,28 @@ require __DIR__ . '/functions.php';
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
+  <section class="navbar">
     <img src="/assets/wll-logo.webp" alt="Wubba Lubba Lodge Logo" class="logo">
     <button onclick="location.href='/users/login.php';">Admin Panel</button>
     <nav>
       <h1 class="header">WUBBA LUBBA LODGE</h1>
     </nav>
-  </div>
+  </section>
 
   <!-- Hero Section -->
   <div class="hero-section">
     <img src="/assets/rick-morty-hero4.webp" alt="Hero Background">
     <button class="cta-button">Book Now!</button>
   </div>
+
+  <section class="intro-section">
+    <h2>Discover the Ultimate Multiverse Escape</h2>
+    <p>
+      Step into a dimension of relaxation and adventure at Wubba Lubba Lodge.
+      Whether you're here to chill or get schwifty, we've got you covered with
+      cosmic luxury and intergalactic fun.
+    </p>
+  </section>
 
 
   <!-- Kalendern -->
@@ -90,6 +99,17 @@ require __DIR__ . '/functions.php';
         <button type="submit">Book Now</button>
       </form>
     </div>
+    <div class="squanch-container">
+      <div class="speech-bubble">
+        <p>
+          Hey there, squanchy travelers! Book 3 nights or more at Wubba Lubba Lodge and squanch yourself a
+          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% discount on your entire stay!
+          The more nights you squanch, the more you save – now that's interdimensional squanchiness!
+        </p>
+      </div>
+      <img src="/assets/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
+    </div>
+
   </section>
 
 
