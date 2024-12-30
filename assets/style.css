@@ -9,6 +9,10 @@ html {
     font-size: 62.5%; /* 1rem = 10px */
 }
 
+body {
+    background: linear-gradient(to bottom, #ffde59, #ffa447);
+}
+
 
 :root {
 --primary-color: #502C55;
@@ -25,6 +29,27 @@ h1 {
         font-family: 'Luckiest Guy', cursive; /* Cartoon-stil */
         color: #f5f7f2; /* Portalgrön färg */
         font-size: 4rem; /* Stor, för att sticka ut */
+    }
+
+    h2 {
+        font-family: 'Luckiest Guy', cursive; /* Cartoon-stil */
+        color: #f5f7f2; 
+        font-size: 3rem; /* Stor, för att sticka ut */
+    }
+
+    p {
+         font-size: 1.8rem;
+    line-height: 1.6;
+    }
+
+    .intro-section {
+        text-align: center;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 20px auto;
+        max-width: 800px;
     }
     
 
