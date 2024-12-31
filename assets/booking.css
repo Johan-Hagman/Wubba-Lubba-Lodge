@@ -1,58 +1,56 @@
+/* Booking Section */
 .booking {
     display: flex;
     justify-content: space-between;
-    /* background-image: url(/assets/bookings.png); */
-    background-size: cover; /* Gör att bilden täcker hela ytan */
-    background-repeat: no-repeat; /* Ingen upprepning */
-    background-position: center; /* Centrerar bilden */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
+/* Squanch Container */
 .squanch-container {
     position: relative;
     display: flex;
-    align-items: center; /* Justerar bilden och pratbubblan vertikalt */
-    gap: 10px; /* Mellanrum mellan pratbubblan och bilden */
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
 }
 
 .squanch-image {
-    max-width: 100%; /* Anpassa bildens storlek */
+    max-width: 100%;
     height: auto;
 }
 
 .speech-bubble {
     position: relative;
-    background: #f9f9f9; /* Bakgrundsfärg för pratbubblan */
-    border: 2px solid #000; /* Kantlinje */
-    border-radius: 10px; /* Rundade hörn */
-    padding: 10px;
-    max-width: 200px; /* Anpassa bredden */
+    background: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 20rem;
     font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+    color: var(--text-color-dark);
+    box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.2);
 }
 
 .speech-bubble::before {
     content: '';
     position: absolute;
-    top: 50%; /* Placera triangeln centralt på höjden */
-    right: -20px; /* Placera triangeln till höger om pratbubblan */
+    top: 50%;
+    right: -2rem;
     transform: translateY(-50%);
-    border-width: 10px;
+    border-width: 1rem;
     border-style: solid;
-    border-color: transparent transparent transparent #f9f9f9; /* Triangeln pekar mot bilden */
+    border-color: transparent transparent transparent var(--secondary-color);
 }
 
-.squanch-container {
-    justify-content: flex-end; /* Gör att pratbubblan hamnar på vänster sida */
-}
-
-
+/* Calendar Section */
 .calendar-item {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 2rem;
+    padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -62,21 +60,21 @@
 .calendar-container {
     display: flex;
     flex-wrap: wrap;
-    width: 100%; /* Täcker hela raden */
+    width: 100%;
 }
 
 .calendar {
-    width: 40%; /* Kalendern täcker hela behållarens bredd */
-    box-sizing: border-box; /* Inkludera padding i breddberäkningen */
-    padding: 10px; /* Jämn padding för bättre utseende */
+    width: 40%;
+    box-sizing: border-box;
+    padding: 1rem;
 }
 
 .info {
-    width: 60%; 
+    width: 60%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .info img {
@@ -85,88 +83,79 @@
     border-radius: 8px;
 }
 
-
 .calendar table {
-    width: 100%; /* Tabellkalender fyller hela sin behållare */
-    border-collapse: collapse; /* Ta bort mellanrum mellan cellerna */
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .calendar .cal-day-box {
-    width: auto; /* Justera kolumnbredd dynamiskt */
-    height: 50px; /* Fast höjd för att undvika hoptryckning */
+    width: auto;
+    height: 5rem;
     text-align: center;
-    line-height: 50px; /* Centrera text vertikalt */
+    line-height: 5rem;
 }
 
-/* Grundläggande styling för formuläret */
+/* Form Section */
 form {
-    background-color: #ffffff; /* Vit bakgrund */
-    border: 1px solid #dddddd; /* Ljusgrå kantlinje */
-    border-radius: 8px; /* Rundade hörn */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Skugga för djup */
-    /* max-width: 500px; */
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 50rem;
-    margin: 20px auto; /* Centrerar formuläret */
+    margin: 2rem auto;
     font-family: 'Arial', sans-serif;
 }
 
-/* Rubrik för formuläret */
 form h2 {
     font-size: 1.5rem;
     text-align: center;
-    color:var(--primary-color); 
-    margin-bottom: 20px;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
 }
 
-/* Styling för etiketter */
 form label {
     display: block;
     font-size: 1rem;
-    color: #333333; /* Mörk text */
-    margin-bottom: 5px;
+    color: #333;
+    margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
-/* Styling för inputs och select */
 form input,
 form select {
     width: 100%;
-    padding: 10px;
+    padding: 1rem;
     font-size: 1rem;
-    color:var(--primary-color); 
+    color: var(--primary-color);
     border: 1px solid #dddddd;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
     background-color: #f4f4f4;
     transition: all 0.3s ease-in-out;
 }
 
 form input:focus,
 form select:focus {
-    border-color: #005f73; /* Mörkblå kant vid fokus */
+    border-color: #005f73;
     outline: none;
-    background-color: #e0f7fa; /* Ljusblå bakgrund vid fokus */
+    background-color: #e0f7fa;
 }
 
-/* Styling för knappen */
 form button {
     width: 100%;
-    padding: 10px;
+    padding: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    background-color: var(--primary-color ); /* Turkos knapp */
+    background-color: var(--primary-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
-form button:hover {
-    background-color: #005f73; /* Mörkare blå vid hover */
-    transform: scale(1.05); /* Förstorar lite */
-}
+
 
 
