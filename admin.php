@@ -110,7 +110,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Formulär för att uppdatera rabatt -->
         <h2>Update Discount Percentage</h2>
-        <form method="POST" action="admin_panel.php">
+        <form method="POST" action="admin.php">
             <label for="discount_percentage">Current Discount: <?php echo htmlspecialchars($currentDiscount); ?>%</label><br>
             <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?php echo htmlspecialchars($currentDiscount); ?>" required>
             <button type="submit">Update Discount</button>

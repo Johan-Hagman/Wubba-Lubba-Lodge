@@ -22,7 +22,7 @@ require __DIR__ . '/functions.php';
 <body>
 
   <!-- Navbar -->
-  <section class="navbar">
+  <nav class="navbar">
     <img src="/assets/wll-logo.webp" alt="Wubba Lubba Lodge Logo" class="logo">
     <div class="stars">
       <img src="/assets/star.png" alt="rating" class="stars">
@@ -31,11 +31,10 @@ require __DIR__ . '/functions.php';
       <img src="/assets/star.png" alt="rating" class="stars">
       <img src="/assets/star.png" alt="rating" class="stars">
     </div>
+    <h1 class="header">WUBBA LUBBA LODGE</h1>
     <button onclick="location.href='/users/login.php';">Admin Panel</button>
-    <nav>
-      <h1 class="header">WUBBA LUBBA LODGE</h1>
-    </nav>
-  </section>
+
+  </nav>
 
   <!-- Hero Section -->
   <div class="hero-section">
