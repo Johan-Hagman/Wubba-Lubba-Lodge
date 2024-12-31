@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/api/database.php';
 require __DIR__ . '/functions.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,13 @@ require __DIR__ . '/functions.php';
   <!-- Navbar -->
   <section class="navbar">
     <img src="/assets/wll-logo.webp" alt="Wubba Lubba Lodge Logo" class="logo">
+    <div class="stars">
+      <img src="/assets/star.png" alt="rating" class="stars">
+      <img src="/assets/star.png" alt="rating" class="stars">
+      <img src="/assets/star.png" alt="rating" class="stars">
+      <img src="/assets/star.png" alt="rating" class="stars">
+      <img src="/assets/star.png" alt="rating" class="stars">
+    </div>
     <button onclick="location.href='/users/login.php';">Admin Panel</button>
     <nav>
       <h1 class="header">WUBBA LUBBA LODGE</h1>
@@ -32,7 +40,7 @@ require __DIR__ . '/functions.php';
   <!-- Hero Section -->
   <div class="hero-section">
     <img src="/assets/rick-morty-hero4.webp" alt="Hero Background">
-    <button class="cta-button">Book Now!</button>
+    <button class="cta-button" onclick="scrollToBooking()">Book Now!</button>
   </div>
 
   <section class="intro-section">
@@ -94,6 +102,9 @@ require __DIR__ . '/functions.php';
           </div>
         <?php endforeach; ?>
 
+        <!-- Dold input för rabatt -->
+        <input type="hidden" id="discount-rate" value="<?php echo htmlspecialchars($currentDiscount); ?>">
+
         <!-- Total Cost -->
         <p><strong>Total Cost:</strong> <span id="total-cost">0</span> $</p>
         <button type="submit">Book Now</button>
@@ -103,18 +114,15 @@ require __DIR__ . '/functions.php';
       <div class="speech-bubble">
         <p>
           Hey there, squanchy travelers! Book 3 nights or more at Wubba Lubba Lodge and squanch yourself a
-          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% discount on your entire stay!
-          The more nights you squanch, the more you save – now that's interdimensional squanchiness!
+          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% discount on your room rate! Please note: the discount does not apply to any added features. The more nights you squanch, the more you save – now that's interdimensional squanchiness!
         </p>
       </div>
       <img src="/assets/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
     </div>
-
   </section>
-
-
+  <div id="scroll-to-booking">
+  </div>
   <script src="/assets/script.js"></script>
-
 </body>
 
 </html>

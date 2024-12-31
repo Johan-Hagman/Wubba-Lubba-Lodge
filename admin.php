@@ -9,11 +9,6 @@ if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
 
 require __DIR__ . '/api/database.php';
 
-// Hämta nuvarande rabatt från databasen
-$stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
-$stmt->execute();
-$currentDiscount = $stmt->fetchColumn();
-
 // Uppdatera priser i databasen om formuläret skickas
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['room_id']) && isset($_POST['price'])) {
@@ -24,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("UPDATE rooms SET price = :price WHERE id = :id");
         $stmt->execute(['price' => $newPrice, 'id' => $roomId]);
 
-        echo "Priset för rummet har uppdaterats!<br>";
+        echo "The price for the room has been updated!<br>";
     }
 
     if (isset($_POST['feature_id']) && isset($_POST['feature_price'])) {
@@ -35,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("UPDATE features SET price = :price WHERE id = :id");
         $stmt->execute(['price' => $newFeaturePrice, 'id' => $featureId]);
 
-        echo "Priset för featuren har uppdaterats!<br>";
+        echo "The price for the feature has been updated!<br>";
     }
 
     if (isset($_POST['discount_percentage'])) {
@@ -55,30 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Uppdatera priser i databasen om formuläret skickas
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['room_id']) && isset($_POST['price'])) {
-        // Uppdatera pris för ett rum
-        $roomId = $_POST['room_id'];
-        $newPrice = $_POST['price'];
-
-        $stmt = $pdo->prepare("UPDATE rooms SET price = :price WHERE id = :id");
-        $stmt->execute(['price' => $newPrice, 'id' => $roomId]);
-
-        echo "Priset för rummet har uppdaterats!<br>";
-    }
-
-    if (isset($_POST['feature_id']) && isset($_POST['feature_price'])) {
-        // Uppdatera pris för en feature
-        $featureId = $_POST['feature_id'];
-        $newFeaturePrice = $_POST['feature_price'];
-
-        $stmt = $pdo->prepare("UPDATE features SET price = :price WHERE id = :id");
-        $stmt->execute(['price' => $newFeaturePrice, 'id' => $featureId]);
-
-        echo "Priset för featuren har uppdaterats!<br>";
-    }
-}
 
 // Hämta alla rum med deras priser
 $roomsStmt = $pdo->query("SELECT id, type, price FROM rooms");
@@ -88,6 +59,10 @@ $rooms = $roomsStmt->fetchAll(PDO::FETCH_ASSOC);
 $featuresStmt = $pdo->query("SELECT id, name, price FROM features");
 $features = $featuresStmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Hämta nuvarande rabatt från databasen
+$stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
+$stmt->execute();
+$currentDiscount = $stmt->fetchColumn();
 
 // Hämta loggar från databasen
 $stmt = $pdo->query("SELECT * FROM api_logs ORDER BY created_at DESC");
@@ -108,34 +83,34 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <section class="admin">
-        <h1>Admin Panel - Uppdatera Rumspriser</h1>
+        <h2>Update Room Price</h2>
         <?php foreach ($rooms as $room): ?>
             <form method="POST" action="admin.php">
                 <h3><?php echo htmlspecialchars($room['type']); ?></h3>
-                <label for="price_<?php echo $room['id']; ?>">Nuvarande pris: <?php echo number_format($room['price'], 2); ?>$</label><br>
+                <label for="price_<?php echo $room['id']; ?>">Current Price: <?php echo number_format($room['price'], 2); ?>$</label><br>
                 <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
                 <input type="number" step="0.01" name="price" id="price_<?php echo $room['id']; ?>" value="<?php echo $room['price']; ?>" required>
-                <button type="submit">Uppdatera Pris</button>
+                <button type="submit">Update Price</button>
             </form>
             <hr>
         <?php endforeach; ?>
 
         <!-- Formulär för att uppdatera feature-priser -->
-        <h2>Uppdatera Feature-Priser</h2>
+        <h2>Update Feature Price</h2>
         <?php foreach ($features as $feature): ?>
             <form method="POST" action="admin.php">
                 <h3><?php echo htmlspecialchars($feature['name']); ?></h3>
-                <label for="feature_price_<?php echo $feature['id']; ?>">Nuvarande pris: <?php echo number_format($feature['price'], 2); ?>$</label><br>
+                <label for="feature_price_<?php echo $feature['id']; ?>">Current Price: <?php echo number_format($feature['price'], 2); ?>$</label><br>
                 <input type="hidden" name="feature_id" value="<?php echo $feature['id']; ?>">
                 <input type="number" step="0.01" name="feature_price" id="feature_price_<?php echo $feature['id']; ?>" value="<?php echo $feature['price']; ?>" required>
-                <button type="submit">Uppdatera Pris</button>
+                <button type="submit">Update Price</button>
             </form>
             <hr>
         <?php endforeach; ?>
 
         <!-- Formulär för att uppdatera rabatt -->
         <h2>Update Discount Percentage</h2>
-        <form method="POST" action="admin.php">
+        <form method="POST" action="admin_panel.php">
             <label for="discount_percentage">Current Discount: <?php echo htmlspecialchars($currentDiscount); ?>%</label><br>
             <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?php echo htmlspecialchars($currentDiscount); ?>" required>
             <button type="submit">Update Discount</button>
