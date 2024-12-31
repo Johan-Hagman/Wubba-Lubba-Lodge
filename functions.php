@@ -120,7 +120,6 @@ $rooms = getAvailableRooms($pdo);
 // Hämta alla tillgängliga features
 $features = getAvailableFeatures($pdo);
 
-
 // Hämta rabattprocenten från databasen
 $stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
 $stmt->execute();
