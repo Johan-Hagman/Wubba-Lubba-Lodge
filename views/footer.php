@@ -15,7 +15,6 @@
             <nav>
                 <a href="/terms">Terms of Service</a> |
                 <a href="/privacy">Privacy Policy</a> |
-                <a href="mailto:contact@wubbalubbalodge.com">Contact Us</a>
             </nav>
         </div>
     </footer>
