@@ -75,7 +75,7 @@ if (!is_array($validationResult)) {
 if (isset($validationResult['error'])) {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
-    <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
     <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
@@ -84,7 +84,7 @@ if (isset($validationResult['error'])) {
 if (!isset($validationResult['status']) || $validationResult['status'] !== 'success') {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
-    <img src="/../assets/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
      <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
@@ -94,7 +94,7 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $t
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Transfer code does not cover the room cost.</p>
     <p>Required: $' . $totalCost . ', Available: $' . $validationResult['totalCost'] . '</p>
-    <img src="/../assets/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
 </div>');
 }
 
