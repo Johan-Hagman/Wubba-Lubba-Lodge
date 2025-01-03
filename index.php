@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/api/database.php';
 require __DIR__ . '/functions.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +8,11 @@ require __DIR__ . '/functions.php';
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="/assets/style.css">
-  <link rel="stylesheet" href="/assets/header.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
   <link rel="stylesheet" type="text/css" href="/vendor/benhall14/php-calendar/html/css/calendar.min.css">
-  <link rel="stylesheet" href="/assets/booking.css">
+  <link rel="stylesheet" href="/assets/css/booking.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -23,34 +23,29 @@ require __DIR__ . '/functions.php';
 
   <!-- Navbar -->
   <nav class="navbar">
-    <img src="/assets/wll-logo.webp" alt="Wubba Lubba Lodge Logo" class="logo">
-    <div class="stars">
-      <img src="/assets/star.png" alt="rating" class="stars">
-      <img src="/assets/star.png" alt="rating" class="stars">
-      <img src="/assets/star.png" alt="rating" class="stars">
-      <img src="/assets/star.png" alt="rating" class="stars">
-      <img src="/assets/star.png" alt="rating" class="stars">
+
+    <div class="logo-container">
+      <img src="/assets/images/wll-logo.webp" alt="Wubba Lubba Lodge Logo" class="logo">
+      <h1 class="header">WUBBA LUBBA LODGE</h1>
     </div>
-    <h1 class="header">WUBBA LUBBA LODGE</h1>
-    <button onclick="location.href='/users/login.php';">Admin Panel</button>
+
+    <div class="stars-container">
+      <img src="/assets/images/star.png" alt="rating" class="stars">
+      <img src="/assets/images/star.png" alt="rating" class="stars">
+      <img src="/assets/images/star.png" alt="rating" class="stars">
+      <img src="/assets/images/star.png" alt="rating" class="stars">
+      <img src="/assets/images/star.png" alt="rating" class="stars">
+    </div>
+
+    <button onclick="location.href='/admin/login.php';">Admin Panel</button>
 
   </nav>
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <img src="/assets/rick-morty-hero4.webp" alt="Hero Background">
+    <img src="/assets/images/rick-morty-hero4.webp" alt="Hero Background">
     <button class="cta-button" onclick="scrollToBooking()">Book Now!</button>
   </div>
-
-  <section class="intro-section">
-    <h2>Discover the Ultimate Multiverse Escape</h2>
-    <p>
-      Step into a dimension of relaxation and adventure at Wubba Lubba Lodge.
-      Whether you're here to chill or get schwifty, we've got you covered with
-      cosmic luxury and intergalactic fun.
-    </p>
-  </section>
-
 
   <!-- Kalendern -->
   <section id="calendar">
@@ -71,7 +66,8 @@ require __DIR__ . '/functions.php';
           <?php endforeach; ?>
 
         </select><br><br>
-
+        <div id="scroll-to-booking">
+        </div>
         <!-- Check-in and Check-out dates -->
         <label for="check_in_date">Check-In Date:</label>
         <input type="date" id="check_in_date" name="check_in_date" min="2025-01-01" max="2025-01-31" required><br><br>
@@ -112,16 +108,19 @@ require __DIR__ . '/functions.php';
     <div class="squanch-container">
       <div class="speech-bubble">
         <p>
-          Hey there, squanchy travelers! Book 3 nights or more at Wubba Lubba Lodge and squanch yourself a
-          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% discount on your room rate! Please note: the discount does not apply to any added features. The more nights you squanch, the more you save – now that's interdimensional squanchiness!
+          Hey squanchy travelers! Book 3+ nights at Wubba Lubba Lodge and enjoy
+          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% off your room rate (features excluded). The more nights you squanch, the more you save. Now that’s interdimensional squanchiness!
         </p>
       </div>
-      <img src="/assets/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
+      <img src="/assets/images/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
     </div>
   </section>
-  <div id="scroll-to-booking">
-  </div>
-  <script src="/assets/script.js"></script>
+
+  <?php
+  require __DIR__ . "/views/footer.php";
+  ?>
+
+  <script src="/assets/script/script.js"></script>
 </body>
 
 </html>
