@@ -1,0 +1,55 @@
+
+.reviews-section {
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-color);
+  }
+  
+  .review-card {
+    background: #ffde59;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 1.5rem auto;
+    max-width: 600px;
+    padding: 1.5rem;
+    text-align: left;
+  }
+  
+  .review-text {
+    font-size: 1.6rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .review-author {
+    text-align: right;
+  }
+  
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .footer-content {
+    margin-bottom: 1rem;
+  }
+  
+  .footer a {
+    color: #ffa447;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-easter-egg {
+    font-size: 0.9rem;
+    color: #eaeaea;
+  }
+  

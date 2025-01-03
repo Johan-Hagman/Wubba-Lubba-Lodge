@@ -7,7 +7,7 @@ if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
     exit;
 }
 
-require __DIR__ . '/api/database.php';
+require __DIR__ . '/../api/database.php';
 
 // Uppdatera priser i databasen om formuläret skickas
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -146,7 +146,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <form method="POST" action="users/logout.php">
+        <form method="POST" action="/admin/logout.php">
             <button type="submit">Logga ut</button>
         </form>
     </section>

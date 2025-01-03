@@ -9,23 +9,52 @@
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-    flex-direction: row-reverse;
-    background-color:var(--secondary-color); /* Gul färg */
+    background: var(--secondary-color);
+    top: 0;
+    z-index: 1000;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  .navbar .logo {
-    height: 10rem;
-  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* padding: 0 1rem 1rem 0rem; */
+}
 
-  .navbar .stars {
+.logo {
+  height: 9rem;
+  width: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+  .stars-container {
    display: flex; 
    justify-content: center;
    align-items: center;
     object-fit: cover;
     height: 10rem;
   }
+
+  .stars {
+    width: 30px;
+    height: auto;
+    animation: star-bounce 2s infinite ease-in-out; /* Adds a bouncing effect */
+}
+
+/* Star bounce animation */
+@keyframes star-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
 
   .hero-section {
     position: relative;
