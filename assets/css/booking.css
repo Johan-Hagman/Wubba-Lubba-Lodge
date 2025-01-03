@@ -98,29 +98,31 @@
 
 /* Form Section */
 form {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
+    background:var(--primary-color);
+    color: #f5f5f5;
+    border: 0.5rem solid var(--secondary-color);
+    border-radius: 1.5rem;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     width: 50rem;
     margin: 2rem auto;
-    font-family: 'Arial', sans-serif;
 }
 
 form h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-align: center;
-    color: var(--primary-color);
+    color: var(--secondary-color); /* Ändrat för att sticka ut */
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px #000;
 }
 
 form label {
     display: block;
     font-size: 1rem;
-    color: #333;
+    color: #f5f5f5; /* Ljusa etiketter */
     margin-bottom: 0.5rem;
     font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
 }
 
 form input,
@@ -130,32 +132,36 @@ form select {
     font-size: 1rem;
     color: var(--primary-color);
     border: 1px solid #dddddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-radius: 8px; /* Rundade hörn */
     margin-bottom: 1.5rem;
     background-color: #f4f4f4;
     transition: all 0.3s ease-in-out;
 }
 
-form input:focus,
-form select:focus {
-    border-color: #005f73;
-    outline: none;
-    background-color: #e0f7fa;
-}
 
 form button {
     width: 100%;
     padding: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
-    color: white;
-    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    background-color: var(--secondary-color);
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 2px #000;
 }
+
+form button:hover {
+    background-color:var(--alternative-color);
+}
+
+form p {
+    color: white;
+}
+
+
 
 
 
