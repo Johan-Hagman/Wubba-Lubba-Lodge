@@ -167,7 +167,7 @@ if ($stmt->execute([
         "additional_info" => [
             "greeting" => "Thank you for choosing Wubba Lubba Lodge",
             "discount" => $discountAmount,
-            "imageUrl" => "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW00amFhMnAwZnB0ZDQxcjJoeWEyZGZ3M2dzMXExMXA1M3RpbWw4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/liBsVeLILcyaY/giphy.gif"
+            "imageUrl" => "https://giphy.com/embed/liBsVeLILcyaY"
         ]
     ];
 

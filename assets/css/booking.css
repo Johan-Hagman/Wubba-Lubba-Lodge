@@ -52,7 +52,6 @@
     margin-bottom: 2rem;
     padding: 1rem;
     border: 1px solid var(--secondary-color);
-    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color:var(--secondary-color);
 }
@@ -81,7 +80,7 @@
 .info img {
     width: 50%;
     height: auto;
-    border-radius: 8px;
+   
 }
 
 .calendar table {
