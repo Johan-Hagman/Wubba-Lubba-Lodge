@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '../api/database.php';
-require __DIR__ . '../functions.php';
+require __DIR__ . '/../api/database.php';
+require __DIR__ . '/../functions.php';
 
 $room_id = isset($_POST['room_id']) ? (int)$_POST['room_id'] : null;
 $guest_name = htmlspecialchars(trim($_POST['guest_name'] ?? ''));
@@ -75,18 +75,18 @@ if (!is_array($validationResult)) {
 if (isset($validationResult['error'])) {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
-    <img src="../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
-    <button onclick="location.href=\'../index.php\';">Back to startpage</button>
+    <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
 }
 
 if (!isset($validationResult['status']) || $validationResult['status'] !== 'success') {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Invalid or insufficient transfer code.</p>
-    <img src="../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
-     <button onclick="location.href=\'../index.php\';">Back to startpage</button>
+     <button onclick="location.href=\'/../index.php\';">Back to startpage</button>
 </div>');
 }
 
@@ -94,7 +94,7 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $t
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
     <p style="color: red;">Transfer code does not cover the room cost.</p>
     <p>Required: $' . $totalCost . ', Available: $' . $validationResult['totalCost'] . '</p>
-    <img src="../assets/images/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
+    <img src="/../assets/images/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
 </div>');
 }
 
@@ -102,7 +102,7 @@ if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $t
 $username = 'Johan';
 $depositResult = consumeTransferCode($username, $transfer_code, intval($totalCost));
 
-logApiResponse($pdo, 'centralbank/deposit', [
+logApiResponse($pdo, '/centralbank/deposit', [
     'user' => $username,
     'transferCode' => $transfer_code,
     'totalCost' => $totalCost

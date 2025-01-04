@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . 'api/database.php';
-require __DIR__ . 'functions.php';
+require __DIR__ . '/api/database.php';
+require __DIR__ . '/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,12 +8,12 @@ require __DIR__ . 'functions.php';
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="assets/images/wll-logo.webp" type="image/webp">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="icon" href="/wubba-lubba-lodge/assets/images/wll-logo.webp" type="image/webp">
+  <link rel="stylesheet" href="/wubba-lubba-lodge/assets/css/style.css">
+  <link rel="stylesheet" href="/wubba-lubba-lodge/assets/css/header.css">
   <link rel="stylesheet" type="text/css" href="/vendor/benhall14/php-calendar/html/css/calendar.min.css">
-  <link rel="stylesheet" href="assets/css/booking.css">
-  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="/wubba-lubba-lodge/assets/css/booking.css">
+  <link rel="stylesheet" href="/wubba-lubba-lodge/assets/css/footer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -38,13 +38,13 @@ require __DIR__ . 'functions.php';
       <img src="assets/images/star.png" alt="rating" class="stars">
     </div>
 
-    <button onclick="location.href='admin/login.php';">Admin Panel</button>
+    <button onclick="location.href='/admin/login.php';">Admin Panel</button>
 
   </nav>
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <img src="assets/images/rick-morty-hero4.webp" alt="Hero Background">
+    <img src="/wubba-lubba-lodge/assets/images/rick-morty-hero4.webp" alt="Hero Background">
     <button class="cta-button" onclick="scrollToBooking()">Book Now!</button>
   </div>
 
@@ -113,15 +113,15 @@ require __DIR__ . 'functions.php';
           <span class="dynamic-discount"><b><?php echo htmlspecialchars($currentDiscount); ?></span>%</b> off your room rate (features excluded). The more nights you squanch, the more you save. Now that’s interdimensional squanchiness!
         </p>
       </div>
-      <img src="assets/images/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
+      <img src="/wubba-lubba-lodge/assets/images/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
     </div>
   </section>
 
   <?php
-  require __DIR__ . "views/footer.php";
+  require __DIR__ . "/views/footer.php";
   ?>
 
-  <script src="assets/script/script.js"></script>
+  <script src="/wubba-lubba-lodge/assets/script/script.js"></script>
 </body>
 
 </html>

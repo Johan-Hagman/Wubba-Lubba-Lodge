@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '../vendor/autoload.php';
-require __DIR__ . '../api/database.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../api/database.php';
 
 use benhall14\phpCalendar\Calendar;
 
@@ -19,20 +19,20 @@ if (!$calendarRooms) {
 // Array för att lagra hårdkodade bilder och beskrivningar
 $roomDetails = [
     'budget' => [
-        'image' => '../assets/images/budget-room.jpg',
+        'image' => '/../assets/images/budget-room.jpg',
         'description' => 'Welcome to Rick’s Rusty Garage, the ultimate budget-friendly crash pad where scrap parts
          and ‘borrowed’ tech create a rugged, interdimensional vibe. It’s the perfect no-frills spot for adventurers
           who don’t mind a little grease with their comfort!',
     ],
     'standard' => [
-        'image' => '../assets/images/standard-room.jpg',
+        'image' => '/../assets/images/standard-room.jpg',
         'description' => 'Tucked away in the heart of the multiverse,
          Rick’s Cozy Retreat is a warm escape from interdimensional chaos,
           featuring plush furnishings and soft lighting. It’s the perfect spot to unwind in style,
            where coziness meets sophistication!',
     ],
     'luxury' => [
-        'image' => '../assets/images/luxury-room.jpg',
+        'image' => '/../assets/images/luxury-room.jpg',
         'description' => 'Welcome to The Reverie Throne, where your imagination takes the wheel.
          Yes, it’s just one chair—but sit down, relax, and choose your dreams… just don’t ask how it works.',
     ],
