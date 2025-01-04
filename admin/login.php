@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the entered API key matches the one from the environment
     if ($apiKey === $apiKeyFromEnv) {
         $_SESSION['is_admin'] = true;
-        header('Location: ./admin/admin.php');
+        header('Location: ./admin.php');
         exit;
     } else {
         echo 'Well, that’s just perfect! Let’s add it to the list of things that have gone horribly wrong today!';
