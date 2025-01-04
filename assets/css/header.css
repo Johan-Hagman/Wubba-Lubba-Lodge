@@ -58,7 +58,6 @@
 
   .hero-section {
     position: relative;
-    /* text-align: center; */
     color: white;
     position: relative;
     text-align: left;
@@ -68,6 +67,7 @@
     width: 100%;
     display: block;
   }
+
 
   .cta-button {
     position: absolute;

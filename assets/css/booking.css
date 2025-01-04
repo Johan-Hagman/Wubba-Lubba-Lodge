@@ -5,6 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 /* Squanch Container */
@@ -12,7 +13,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 1rem;
     justify-content: flex-end;
 }
 

@@ -12,8 +12,8 @@ html {
 }
 
 body {
-    background: linear-gradient(to bottom, #ffde59, #ffa447);
-    /* background:var(--alternative-color); */
+    /* background: linear-gradient(to bottom, #ffde59, #ffa447); */
+    background:#EB8F8A;
     font-family: Arial, sans-serif; /* Standard fallback */
 }
 

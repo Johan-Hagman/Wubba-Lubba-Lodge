@@ -8,6 +8,7 @@ require __DIR__ . '/functions.php';
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/assets/images/wll-logo.webp" type="image/webp">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/header.css">
   <link rel="stylesheet" type="text/css" href="/vendor/benhall14/php-calendar/html/css/calendar.min.css">
@@ -109,7 +110,7 @@ require __DIR__ . '/functions.php';
       <div class="speech-bubble">
         <p>
           Hey squanchy travelers! Book 3+ nights at Wubba Lubba Lodge and enjoy
-          <span class="dynamic-discount"><?php echo htmlspecialchars($currentDiscount); ?></span>% off your room rate (features excluded). The more nights you squanch, the more you save. Now that’s interdimensional squanchiness!
+          <span class="dynamic-discount"><b><?php echo htmlspecialchars($currentDiscount); ?></span>%</b> off your room rate (features excluded). The more nights you squanch, the more you save. Now that’s interdimensional squanchiness!
         </p>
       </div>
       <img src="/assets/images/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
