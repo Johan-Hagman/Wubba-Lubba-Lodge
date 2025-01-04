@@ -11,7 +11,7 @@ require __DIR__ . '/functions.php';
   <link rel="icon" href="./assets/images/wll-logo.webp" type="image/webp">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/header.css">
-  <link rel="stylesheet" type="text/css" href="/vendor/benhall14/php-calendar/html/css/calendar.min.css">
+  <link rel="stylesheet" type="text/css" href="./vendor/benhall14/php-calendar/html/css/calendar.min.css">
   <link rel="stylesheet" href="./assets/css/booking.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">

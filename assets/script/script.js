@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Kopiera valda features till huvudformuläret vid submit
-    document.querySelector('form[action="/api/book_room.php"]').addEventListener('submit', function (e) {
+    document.querySelector('form[action="./api/book_room.php"]').addEventListener('submit', function (e) {
         const startDate = new Date(checkInDate.value);
         const endDate = new Date(checkOutDate.value);
 

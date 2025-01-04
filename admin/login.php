@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the entered API key matches the one from the environment
     if ($apiKey === $apiKeyFromEnv) {
         $_SESSION['is_admin'] = true;
-        header('Location: /admin/admin.php');
+        header('Location: ./admin/admin.php');
         exit;
     } else {
         echo 'Well, that’s just perfect! Let’s add it to the list of things that have gone horribly wrong today!';
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="api_key" placeholder="Enter your API Key" required>
         <!-- <input type="password" name="password" placeholder="Password" required> -->
         <button type="submit">Login</button>
-        <button onclick="location.href='/../index.php';">Back to startpage</button>
+        <button onclick="location.href='./../index.php';">Back to startpage</button>
     </form>
 </body>
 
