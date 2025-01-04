@@ -44,6 +44,59 @@ DATABASE_PATH=/path/to/your/database.sqlite
 
 4. Ensure the php-calendar and dotenv libraries are correctly included in the project.
 
+## SQL Queries for Recreating the Database
+
+-- Table for features that can be added to bookings
+CREATE TABLE features (
+    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    name TEXT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
+);
+
+-- Table for room bookings
+CREATE TABLE bookings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    room_id INTEGER NOT NULL REFERENCES rooms(id),
+    guest_name TEXT NOT NULL,
+    check_in_date DATE NOT NULL,
+    check_out_date DATE NOT NULL,
+    transfer_code TEXT NOT NULL
+);
+
+-- Table for available rooms
+CREATE TABLE rooms (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    hotel_id INTEGER NOT NULL,
+    type TEXT NOT NULL,
+    price INTEGER NOT NULL
+);
+
+-- Table for logging API requests and responses
+CREATE TABLE api_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    endpoint VARCHAR(255) NOT NULL,
+    request_data TEXT NOT NULL,
+    response_data TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table for mapping features to specific bookings
+CREATE TABLE booking_features (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    booking_id INTEGER NOT NULL,
+    feature_id INTEGER NOT NULL,
+    FOREIGN KEY (booking_id) REFERENCES bookings(id),
+    FOREIGN KEY (feature_id) REFERENCES features(id)
+);
+
+-- Table for application settings
+CREATE TABLE settings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    value VARCHAR(255) NOT NULL
+);
+
+
 ## Usage
 Homepage: Explore the hotel with its Rick and Morty-inspired design.
 Room Booking: Use the booking form to choose a room, select dates, and add features.
