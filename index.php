@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/api/database.php';
-require __DIR__ . '/functions.php';
+require_once __DIR__ . '/api/database.php';
+require_once __DIR__ . '/functions.php';
 ?>
 
 <!DOCTYPE html>

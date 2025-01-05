@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../api/database.php';
-require __DIR__ . '/../functions.php';
+require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../api/database.php';
+require_once __DIR__ . '/../functions.php';
 
 $room_id = isset($_POST['room_id']) ? (int)$_POST['room_id'] : null;
 $guest_name = htmlspecialchars(trim($_POST['guest_name'] ?? ''));

@@ -7,7 +7,7 @@ if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
     exit;
 }
 
-require __DIR__ . '/../api/database.php';
+require_once __DIR__ . '/../api/database.php';
 
 // Uppdatera priser i databasen om formuläret skickas
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

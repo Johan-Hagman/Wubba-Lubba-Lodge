@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/api/database.php';
+require_once __DIR__ . '/api/database.php';
 
 function validateTransferCode(string $transferCode, float $totalCost): array
 {
