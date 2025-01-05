@@ -1,7 +1,130 @@
+/* Grundinställningar
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
+Admin-sektion
+.admin {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin h2 {
+  margin-top: 0;
+  color: #0073e6;
+}
+
+.admin form {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.admin label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.admin input[type="number"],
+.admin button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.admin button {
+  background-color: var(--alternative-color);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.admin button:hover {
+  background-color: #005bb5;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+/* API-loggar */
+/* .api-logs {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.api-logs h1 {
+  color: #0073e6;
+}
+
+.api-logs table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.api-logs th,
+.api-logs td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.api-logs th {
+  background-color: #0073e6;
+  color: #fff;
+}
+
+.api-logs pre {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Logout-knapp */
+/* .api-logs form {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.api-logs form button {
+  background-color: #e60000;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.api-logs form button:hover {
+  background-color: #b30000;
+} */
