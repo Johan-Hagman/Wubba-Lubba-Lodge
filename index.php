@@ -55,7 +55,7 @@ require __DIR__ . '/functions.php';
   <section class="booking">
     <div class="form-container">
       <!-- Formulär för att boka ett rum och välja features -->
-      <form action="api/book_room.php" method="POST">
+      <form action="./api/book_room.php" method="POST">
         <!-- Room selection -->
         <select id="room_id" name="room_id" required>
           <?php
@@ -86,18 +86,19 @@ require __DIR__ . '/functions.php';
 
         <!-- Features selection -->
         <h2>Select Features</h2>
-        <?php foreach ($features as $feature): ?>
-          <div>
-            <input type="checkbox" id="feature-<?php echo $feature['id']; ?>"
-              name="features[]"
-              value="<?php echo $feature['id']; ?>"
-              data-price="<?php echo isset($feature['price']) ? $feature['price'] : 0; ?>">
-            <label for="feature-<?php echo $feature['id']; ?>">
-              <?php echo htmlspecialchars($feature['name']) . " (Price: {$feature['price']}$)"; ?>
-            </label>
-          </div>
-        <?php endforeach; ?>
-
+        <div class="features-container">
+          <?php foreach ($features as $feature): ?>
+            <div>
+              <input type="checkbox" id="feature-<?php echo $feature['id']; ?>"
+                name="features[]"
+                value="<?php echo $feature['id']; ?>"
+                data-price="<?php echo isset($feature['price']) ? $feature['price'] : 0; ?>">
+              <label for="feature-<?php echo $feature['id']; ?>">
+                <?php echo htmlspecialchars($feature['name']) . " (Price: {$feature['price']}$)"; ?>
+              </label>
+            </div>
+          <?php endforeach; ?>
+        </div>
         <!-- Dold input för rabatt -->
         <input type="hidden" id="discount-rate" value="<?php echo htmlspecialchars($currentDiscount); ?>">
 

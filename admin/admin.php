@@ -146,7 +146,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <form method="POST" action="/admin/logout.php">
+        <form method="POST" action="./logout.php">
             <button type="submit">Logga ut</button>
         </form>
     </section>

@@ -172,6 +172,6 @@ if ($stmt->execute([
     ];
 
     header('Content-Type: application/json');
-    echo json_encode($response, JSON_PRETTY_PRINT);
+    echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     exit;
 }

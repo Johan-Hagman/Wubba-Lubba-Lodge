@@ -16,6 +16,7 @@
     z-index: 1000;
     padding-left: 1rem;
     padding-right: 1rem;
+    border-radius: 1rem 1rem 0 0;
   }
 
   .logo-container {
@@ -66,6 +67,8 @@
   .hero-section img {
     width: 100%;
     display: block;
+    border-radius: 0 0 1rem 1rem;
+    margin-bottom: 2rem;
   }
 
 
@@ -73,7 +76,7 @@
     position: absolute;
     bottom: 20px;
     top: 50%; /* Centrera vertikalt */
-    left: 10%; /* Flytta till vänster */
+    left: 20%; /* Flytta till vänster */
     transform: translateX(-50%);
     background-color:var(--primary-color); /* Lila färg */
     color: white;
