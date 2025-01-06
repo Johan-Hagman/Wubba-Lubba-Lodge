@@ -6,6 +6,9 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../api/database.php';
 require_once __DIR__ . '/../functions.php';
 
+
+
+
 $room_id = isset($_POST['room_id']) ? (int)$_POST['room_id'] : null;
 $guest_name = htmlspecialchars(trim($_POST['guest_name'] ?? ''));
 $check_in_date = htmlspecialchars(trim($_POST['check_in_date'] ?? ''));
