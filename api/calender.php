@@ -103,8 +103,8 @@ foreach ($calendarRooms as $room) {
     echo $calendarHTML; // Visa kalender
     echo "</div>";
     echo "<div class='info'>";
-    echo "<img src='$image' alt='$roomName' />";
-    echo "<p>$description</p>";
+    echo "<img src='$image' alt='$roomName' />"; // Visa bild på rummet
+    echo "<p>$description</p>"; // Visa beskrivning
     echo "</div>";
     echo "</div>";
 }
