@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <form method="POST">
         <input type="text" name="api_key" placeholder="Enter your API Key" required>
-        <!-- <input type="password" name="password" placeholder="Password" required> -->
         <button type="submit">Login</button>
         <button onclick="location.href='./../index.php';">Back to startpage</button>
     </form>
