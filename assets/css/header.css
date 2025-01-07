@@ -94,16 +94,13 @@
   top: 50%; /* Center vertically */
   left: 20%; /* Offset to the left */
   transform: translateX(-50%);
-  background-color: var(--primary-color); /* Use primary color */
   color: var(--text-color-light); /* Consistent light text color */
   padding: 1rem 2rem; /* Adjusted padding */
   font-size: 3.2rem; /* Consistent typography */
   border: none;
-  border-radius: 0.5rem;
   cursor: pointer;
   height: 10rem; /* Consistent sizing */
   width: 27.5rem; /* Consistent sizing */
-  transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
 .cta-button:hover {
