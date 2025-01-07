@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Login</button>
         <button onclick="location.href='./../index.php';">Back to startpage</button>
     </form>
+
 </body>
 
 </html>
