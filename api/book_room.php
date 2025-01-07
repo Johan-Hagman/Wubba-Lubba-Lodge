@@ -76,31 +76,39 @@ if (!is_array($validationResult)) {
     die("Unexpected response from API. Response is not an array.");
 }
 
+// Kontrollera om API har returnerat ett fel
 if (isset($validationResult['error'])) {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
-    <p style="color: red;">Invalid or insufficient transfer code.</p>
+    <p style="color: red;">Invalid transfer code. Please check your code and try again.</p>
     <img src="./../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
     <button onclick="location.href=\'./../index.php\';">Back to startpage</button>
 </div>');
 }
 
+// Kontrollera att transferkoden är giltig
 if (!isset($validationResult['status']) || $validationResult['status'] !== 'success') {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
-    <p style="color: red;">Invalid or insufficient transfer code.</p>
+    <p style="color: red;">Invalid transfer code. Please check your code and try again.</p>
     <img src="./../assets/images/booking-denied.webp" alt="Error" style="width: 500px; height: auto;"/>
     <br> <br>
-     <button onclick="location.href=\'./../index.php\';">Back to startpage</button>
+    <button onclick="location.href=\'./../index.php\';">Back to startpage</button>
 </div>');
 }
 
+// Kontrollera om transferkoden har otillräckligt saldo
 if (isset($validationResult['totalCost']) && $validationResult['totalCost'] < $totalCost) {
     die('<div style="text-align: center; font-family: Arial, sans-serif;">
-    <p style="color: red;">Transfer code does not cover the room cost.</p>
+    <p style="color: red;">Transfer code balance is insufficient for this booking.</p>
     <p>Required: $' . $totalCost . ', Available: $' . $validationResult['totalCost'] . '</p>
     <img src="./../assets/images/booking-denied.png" alt="Insufficient Funds" style="width: 200px; height: auto;"/>
+    <br> <br>
+    <button onclick="location.href=\'./../index.php\';">Back to startpage</button>
 </div>');
 }
+
+
+
 
 // Konsumera transferkoden och sätt in pengarna
 $username = 'Johan';
