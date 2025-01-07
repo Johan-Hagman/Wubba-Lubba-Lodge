@@ -1,58 +1,64 @@
+/* ====================
+   Reviews Section Styles
+   ==================== */
 
 .reviews-section {
-    padding: 2rem;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--primary-color);
-  }
-  
-  .review-card {
-    background: #ffde59;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 1.5rem auto;
-    max-width: 600px;
-    padding: 1.5rem;
-    text-align: left;
-  }
-  
-  .review-text {
-    font-size: 1.6rem;
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-  
-  .review-author {
-    text-align: right;
-  }
-  
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-family-main); /* Consistent typography */
+  background-color: var(--primary-color); /* Primary color background */
+  color: var(--text-color-light); /* Ensure text contrast */
+}
+
+.review-card {
+  background-color: var(--secondary-color); /* Use secondary color */
+  border-radius: 1.5rem; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  margin: 1.5rem auto;
+  max-width: 60rem; /* Responsive max width */
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.review-text {
+  font-size: 1.6rem; /* Maintain readability */
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: var(--text-color-dark); /* Darker text for contrast */
+}
+
+.review-author {
+  text-align: right;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color-light); /* Light text for consistency */
+}
+
+/* ====================
+   Footer Styles
+   ==================== */
 
 .footer {
-    background-color: var(--secondary-color);
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--secondary-color);
+  color: var(--primary-color); /* Contrast with the footer background */
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
 
-  }
-  
-  .footer-content {
-    margin-bottom: 1rem;
-  }
-  
-  .footer a {
-    color: #ffa447;
-    text-decoration: none;
-    margin: 0 5px;
-  }
-  
-  .footer a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-easter-egg {
-    font-size: 0.9rem;
-    color: #eaeaea;
-  }
-  
+.footer-content {
+  margin-bottom: 1rem;
+}
+
+.footer a {
+  color: var(--alternative-color); /* Use alternative color */
+  text-decoration: none;
+  margin: 0 0.5rem; /* Consistent spacing */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: var(--button-hover-bg); /* Hover effect using button hover color */
+}

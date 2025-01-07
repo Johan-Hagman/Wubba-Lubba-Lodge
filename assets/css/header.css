@@ -1,98 +1,111 @@
+/* ====================
+   Header Styles
+   ==================== */
+
+/* Header Container */
 .header {
-    text-align: center; /* Centrera texten */
-        text-shadow: 0 0 10px var(--primary-color), /* Neon-effekt */
-                     0 0 20px var(--primary-color), 
-                     0 0 30px var(--primary-color);
-        margin: 20px 0; /* Avstånd från andra element */
-        letter-spacing: 2px; /* Gör texten luftigare */
+  text-align: center; /* Center the text */
+  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color),
+    0 0 30px var(--primary-color); /* Neon effect */
+  margin: 2rem 0; /* Space from other elements */
+  letter-spacing: 2px; /* Add spacing between letters */
 }
 
+/* ====================
+ Navbar Styles
+ ==================== */
+
 .navbar {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    background: var(--secondary-color);
-    top: 0;
-    z-index: 1000;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 1rem 1rem 0 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-color);
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0; /* Rounded corners on the top */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
 
-  }
-
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* padding: 0 1rem 1rem 0rem; */
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Consistent spacing */
 }
 
 .logo {
   height: 9rem;
   width: auto;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-  .stars-container {
-   display: flex; 
-   justify-content: center;
-   align-items: center;
-    object-fit: cover;
-    height: 10rem;
-  }
-
-  .stars {
-    width: 30px;
-    height: auto;
-    animation: star-bounce 2s infinite ease-in-out; /* Adds a bouncing effect */
+/* Stars Container */
+.stars-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  object-fit: cover;
 }
 
-/* Star bounce animation */
+.stars {
+  width: 3rem; /* Consistent size using rem */
+  height: auto;
+  animation: star-bounce 2s infinite ease-in-out; /* Adds a bouncing effect */
+}
+
+/* Star Bounce Animation */
 @keyframes star-bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem); /* Adjusted bounce height */
+  }
 }
 
-  .hero-section {
-    position: relative;
-    color: white;
-    position: relative;
-    text-align: left;
-  }
+/* ====================
+ Hero Section Styles
+ ==================== */
 
-  .hero-section img {
-    width: 100%;
-    display: block;
-    border-radius: 0 0 1rem 1rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.hero-section {
+  position: relative;
+  color: var(--text-color-light); /* Consistent text color */
+  text-align: left;
+}
 
-  }
+.hero-section img {
+  width: 100%;
+  display: block;
+  border-radius: 0 0 1rem 1rem; /* Rounded corners on the bottom */
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
 
+/* ====================
+ Call-to-Action Button
+ ==================== */
 
-  .cta-button {
-    position: absolute;
-    bottom: 20px;
-    top: 50%; /* Centrera vertikalt */
-    left: 20%; /* Flytta till vänster */
-    transform: translateX(-50%);
-    background-color:var(--primary-color); /* Lila färg */
-    color: white;
-    padding: 10px 20px;
-    font-size: 32px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 100px;
-    width: 275px;
-  }
+.cta-button {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 20%; /* Offset to the left */
+  transform: translateX(-50%);
+  background-color: var(--primary-color); /* Use primary color */
+  color: var(--text-color-light); /* Consistent light text color */
+  padding: 1rem 2rem; /* Adjusted padding */
+  font-size: 3.2rem; /* Consistent typography */
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 10rem; /* Consistent sizing */
+  width: 27.5rem; /* Consistent sizing */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
 
-  .cta-button:hover {
-    background-color: var( --button-hover-bg);
-  }
+.cta-button:hover {
+  background-color: var(--button-hover-bg); /* Use hover variable */
+}
