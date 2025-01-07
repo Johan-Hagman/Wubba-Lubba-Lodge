@@ -33,7 +33,6 @@
   border-radius: 1rem;
   padding: 1rem;
   max-width: 20rem;
-  font-family: var(--font-family-main);
   font-size: 1.4rem;
   color: var(--text-color-dark);
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.2);
@@ -149,17 +148,8 @@ form select {
 }
 
 form button {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
   color: var(--text-color-light);
   background-color: var(--secondary-color);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  text-shadow: 1px 1px 2px #000;
 }
 
 form button:hover {

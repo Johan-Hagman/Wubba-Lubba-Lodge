@@ -1,92 +1,88 @@
 /* ====================
    1. Reset & Global
    ==================== */
-   * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-size: 62.5%; /* 1rem = 10px */
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
-    background: linear-gradient(to bottom, #ffde59, #ffa447);
-    font-family: Arial, sans-serif; /* Standard fallback */
-    margin: 2.5vw;
+  background: linear-gradient(to bottom, #ffde59, #ffa447);
+  font-family: Arial, sans-serif; /* Standard fallback */
+  margin: 2.5vw;
 }
 
 /* ====================
    2. Variables
    ==================== */
 :root {
-    --primary-color: #502C55;
-    --secondary-color: #FFF097;
-    --alternative-color:#ffa447;
-    --font-family-main: 'Luckiest Guy', cursive;
-    --text-color-light: #f5f7f2;
-    --text-color-dark: #333;
-    --button-hover-bg: #5A005A;
+  --primary-color: #502c55;
+  --secondary-color: #fff097;
+  --alternative-color: #ffa447;
+  --font-family-main: "Luckiest Guy", cursive;
+  --text-color-light: #f5f7f2;
+  --text-color-dark: #333;
+  --button-hover-bg: #5a005a;
 }
 
 /* ====================
    3. Typography
    ==================== */
-h1, h2 {
-    font-family: var(--font-family-main); /* Cartoon-stil */
-    color: var(--text-color-light); 
+h1,
+h2 {
+  font-family: var(--font-family-main); /* Cartoon-stil */
+  color: var(--text-color-light);
 }
 
 h1 {
-    font-size: 4rem; /* Stor, för att sticka ut */
+  font-size: 4rem; /* Stor, för att sticka ut */
 }
 
 h2 {
-    font-size: 3rem; /* Mindre än h1 */
+  font-size: 3rem; /* Mindre än h1 */
 }
 
 p {
-    font-size: 1.8rem;
-    line-height: 1.6;
-    color: var(--text-color-dark);
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--text-color-dark);
 }
 
 /* ====================
    4. Buttons
    ==================== */
 button {
-    font-family: var(--font-family-main);
-    font-weight: 400;
-    font-style: normal;
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  font-family: var(--font-family-main);
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-shadow: 1px 1px 2px #000;
 }
 
 button:hover {
-    background-color: var(--button-hover-bg);
+  background-color: var(--button-hover-bg);
 }
 
 /* ====================
    5. Utilities (Extra Styles)
    ==================== */
 .container {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 1rem;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
-
-
-   
-    
-
-
