@@ -94,11 +94,7 @@
   top: 50%; /* Center vertically */
   left: 20%; /* Offset to the left */
   transform: translateX(-50%);
-  color: var(--text-color-light); /* Consistent light text color */
-  padding: 1rem 2rem; /* Adjusted padding */
   font-size: 3.2rem; /* Consistent typography */
-  border: none;
-  cursor: pointer;
   height: 10rem; /* Consistent sizing */
   width: 27.5rem; /* Consistent sizing */
 }
