@@ -4,6 +4,11 @@
     <div class="form-container">
         <!-- Formulär för att boka ett rum och välja features -->
         <form action="./api/book_room.php" method="POST">
+
+            <div class="form-header">
+                <h2>Book room</h2>
+            </div>
+
             <!-- Room selection -->
             <select id="room_id" name="room_id" required>
                 <?php
@@ -54,6 +59,30 @@
             <button type="submit">Book Now</button>
         </form>
     </div>
+
+    <form id="transferForm">
+        <div class="form-header">
+            <h2>Grab Your Cash</h2>
+        </div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="apiKey">API-Key:</label>
+        <input type="text" id="apiKey" name="apiKey" required>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+
+        <button type="submit">Create transfercode</button>
+
+        <!-- Lägg till ett tomt meddelandeelement här -->
+        <div id="message" style="margin-top: 10px;"></div>
+    </form>
+
+    <div id="message"></div>
+
+
+
     <div class="squanch-container">
         <div class="speech-bubble">
             <p>
