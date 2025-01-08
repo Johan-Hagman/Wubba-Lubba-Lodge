@@ -51,7 +51,14 @@ require_once __DIR__ . '/functions.php';
   require __DIR__ . "/views/footer.php";
   ?>
 
-  <script src="./assets/script/script.js"></script>
+
+  <script src="./assets/script/transfercode.js"></script>
+  <script src="./assets/script/calendar.js"></script>
+  <script src="./assets/script/costCalculator.js"></script>
+  <script src="./assets/script/formHandler.js"></script>
+  <script src="./assets/script/scrollHandler.js"></script>
+
+
 </body>
 
 </html>
