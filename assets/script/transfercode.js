@@ -1,32 +1,32 @@
 document
   .getElementById("transferForm")
   .addEventListener("submit", async function (e) {
-    e.preventDefault(); // Förhindra att sidan laddas om
+    e.preventDefault(); // Prevent the page from reloading on form submission
 
-    const formData = new FormData(this); // Hämta formulärdata
-    const messageDiv = document.getElementById("message"); // Hämta meddelandeelementet
+    const formData = new FormData(this); // Retrieve form data
+    const messageDiv = document.getElementById("message"); // Get the element to display messages
 
     try {
       const response = await fetch("/../api/transfercode.php", {
-        method: "POST",
-        body: formData,
+        method: "POST", // Send data via POST method
+        body: formData, // Include form data in the request body
       });
 
-      const result = await response.json();
+      const result = await response.json(); // Parse the response as JSON
 
       if (response.ok) {
-        // Visa transferkoden
+        // Display the transfer code if the request was successful
         messageDiv.innerHTML = `<p>Transfercode created: <strong>${result.transferCode}</strong></p>`;
       } else {
-        // Visa felmeddelande
-        messageDiv.innerHTML = `<p>Något gick fel: ${
-          result.error || "Okänt fel"
+        // Display an error message if the server returned an error
+        messageDiv.innerHTML = `<p>Something went wrong: ${
+          result.error || "Unknown error"
         }</p>`;
-        messageDiv.style.color = "red"; // Sätt färg för fel
+        messageDiv.style.color = "red"; // Set the text color to red for errors
       }
     } catch (error) {
-      // Hantera nätverks- eller serverfel
-      messageDiv.innerHTML = `<p>Fel: ${error.message}</p>`;
+      // Handle network or server errors
+      messageDiv.innerHTML = `<p>Error: ${error.message}</p>`;
       messageDiv.style.color = "red";
     }
   });

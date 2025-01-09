@@ -1,23 +1,27 @@
 <?php
-// Inkludera din functions.php
-require __DIR__ . '/../functions.php';
 
+require __DIR__ . '/../functions.php'; // Include the file containing helper functions
+
+// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = htmlspecialchars(trim($_POST['username']));
-    $apiKey = htmlspecialchars(trim($_POST['apiKey']));
-    $amount = (float) $_POST['amount'];
+    // Sanitize and validate input data
+    $username = htmlspecialchars(trim($_POST['username'])); // Sanitize username
+    $apiKey = htmlspecialchars(trim($_POST['apiKey'])); // Sanitize API key
+    $amount = (float) $_POST['amount']; // Cast the amount to a float
+
     try {
+        // Call the createTransferCode function to generate a transfer code
         $response = createTransferCode($username, $apiKey, $amount);
 
         if (isset($response['transferCode'])) {
-            // Skicka tillbaka transferkoden som JSON
+            // Return the transfer code as JSON if successfully created
             echo json_encode(['transferCode' => $response['transferCode']]);
         } else {
-            // Skicka tillbaka ett generellt felmeddelande
+            // Return a generic error message if no transfer code was created
             echo json_encode(['error' => 'Unable to create transfer code. Please try again.']);
         }
     } catch (Exception $e) {
-        // Skicka ett generellt fel istället för detaljer
+        // Handle unexpected errors gracefully by returning a generic error message
         echo json_encode(['error' => 'An unexpected error occurred.']);
     }
 }

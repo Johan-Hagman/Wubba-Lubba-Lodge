@@ -2,23 +2,22 @@
 
 declare(strict_types=1);
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . "/../vendor/autoload.php"; // Load dependencies via Composer
 
 function connect(): PDO
-
 {
-    // Sökvägen till din databas
-    $dbName = __DIR__ . '/../database/yrgopelago.db';
+    // Path to the database
+    $dbName = __DIR__ . '/../database/yrgopelago.db'; // Specify the location of the SQLite database
     $db = "sqlite:$dbName";
 
-    // Försök att ansluta till databasen
+    // Try to connect to the database
     try {
         return new PDO($db, null, null, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Hantera fel som undantag
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Standard: associativa arrayer
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Handle errors as exceptions
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Default fetch mode: associative arrays
         ]);
     } catch (PDOException $e) {
-        // Logga eller visa ett felmeddelande om anslutningen misslyckas
+        // Log or display an error message if the connection fails
         die("Failed to connect to the database: " . $e->getMessage());
     }
 }

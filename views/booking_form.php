@@ -2,7 +2,7 @@
 </div>
 <article class="booking">
     <div class="form-container">
-        <!-- Formulär för att boka ett rum och välja features -->
+        <!-- Form to book a room and features -->
         <form id="booking-form" action="./api/book_room.php" method="POST">
 
             <div class="form-header">
@@ -51,7 +51,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <!-- Dold input för rabatt -->
+            <!--hidden input for discount -->
             <input type="hidden" id="discount-rate" value="<?php echo htmlspecialchars($currentDiscount); ?>">
 
             <!-- Total Cost -->
@@ -75,7 +75,7 @@
 
         <button type="submit">Create transfercode</button>
 
-        <!-- Lägg till ett tomt meddelandeelement här -->
+        <!-- Add a message here -->
         <div id="message"></div>
     </form>
 

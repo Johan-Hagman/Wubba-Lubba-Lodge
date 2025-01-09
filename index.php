@@ -34,12 +34,12 @@ require_once __DIR__ . '/functions.php';
       <button class="cta-button" onclick="scrollToBooking()" aria-label="Scroll to booking section">Book Now!</button>
     </div>
 
-    <!-- Kalendern -->
+    <!-- Calendar -->
     <section id="calendar">
       <?php include 'api/calender.php'; ?>
     </section>
 
-    <!-- Bokningsformulär -->
+    <!-- Bookingform -->
     <?php
     require __DIR__ . '/views/booking_form.php';
     ?>

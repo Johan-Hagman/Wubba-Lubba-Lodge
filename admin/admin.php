@@ -1,19 +1,19 @@
 <?php
 session_start();
 
-// Kontrollera om användaren är autentiserad
+// Check if the user is authenticated
 if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    header('Location: /users/login.php'); // Skicka användaren tillbaka till login
+    header('Location: /users/login.php'); // Redirect user to login page
     exit;
 }
 
 require_once __DIR__ . '/../api/database.php';
 require_once __DIR__ . '/../functions.php';
 
-// Uppdatera priser i databasen om formuläret skickas
+// Handle form submissions for updating prices, discounts, stars, or deleting bookings
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['room_id']) && isset($_POST['price'])) {
-        // Uppdatera pris för ett rum
+        // Update room price
         $roomId = $_POST['room_id'];
         $newPrice = $_POST['price'];
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['feature_id']) && isset($_POST['feature_price'])) {
-        // Uppdatera pris för en feature
+        // Update feature price
         $featureId = $_POST['feature_id'];
         $newFeaturePrice = $_POST['feature_price'];
 
@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['discount_percentage'])) {
-        // Uppdatera rabatt
+        // Update discount percentage
         $newDiscount = (int)$_POST['discount_percentage'];
 
-        // Validera att rabattprocenten är mellan 0 och 100
+        // Validate that discount is between 0 and 100
         if ($newDiscount < 0 || $newDiscount > 100) {
             echo "<p style='color: red;'>Discount must be between 0 and 100.</p>";
         } else {
@@ -46,11 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([':value' => $newDiscount]);
 
             echo "<p style='color: green;'>Discount updated to $newDiscount%!</p>";
-            $currentDiscount = $newDiscount; // Uppdatera lokalt för att visa det nya värdet direkt
+            $currentDiscount = $newDiscount; // Update locally for immediate display
         }
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['star_rating'])) {
+    if (isset($_POST['star_rating'])) {
+        // Update hotel star rating
         $newRating = (int)$_POST['star_rating'];
 
         if ($newRating >= 1 && $newRating <= 5) {
@@ -62,17 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<p style='color: red;'>Database error: " . $e->getMessage() . "</p>";
             }
         } else {
-            echo "<p style='color: red;'Rating must be between 1 and 5.</p>";
+            echo "<p style='color: red;'>Rating must be between 1 and 5.</p>";
         }
     }
 
-    // Check if the form is submitted
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking_id'])) {
+    if (isset($_POST['booking_id'])) {
+        // Delete a booking
         $bookingId = intval($_POST['booking_id']); // Retrieve and sanitize the input
 
-        // Check if booking_id is valid
         if ($bookingId > 0) {
-            // Prepare the SQL query using PDO
+            // Prepare SQL query to delete the booking
             $query = "DELETE FROM bookings WHERE id = :id";
             $stmt = $pdo->prepare($query);
 
@@ -91,27 +91,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
-
-// Hämta alla rum med deras priser
+// Fetch all rooms with their prices
 $roomsStmt = $pdo->query("SELECT id, type, price FROM rooms");
 $rooms = $roomsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Hämta alla features med deras priser
+// Fetch all features with their prices
 $featuresStmt = $pdo->query("SELECT id, name, price FROM features");
 $features = $featuresStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Hämta nuvarande rabatt från databasen
+// Fetch current discount from the database
 $stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
 $stmt->execute();
 $currentDiscount = $stmt->fetchColumn();
 
-// Hämta nuvarande stjärnantal från databasen
+// Fetch current star rating from the database
 $stmt = $pdo->prepare("SELECT stars FROM hotel_info WHERE id = 1");
 $stmt->execute();
-$currentRating = $stmt->fetchColumn(); // Standardvärde för stjärnor
+$currentRating = $stmt->fetchColumn();
 
-// Hämta bokningar från databasen
+// Fetch bookings from the database
 $bookingsStmt = $pdo->query("SELECT id, room_id, guest_name, check_in_date, check_out_date, transfer_code FROM bookings ORDER BY check_in_date DESC");
 $bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -128,39 +126,41 @@ $bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <section class="admin">
+        <!-- Update room prices -->
         <h2>Update Room Price</h2>
         <?php foreach ($rooms as $room): ?>
             <form method="POST" action="admin.php">
-                <h3><?php echo htmlspecialchars($room['type']); ?></h3>
-                <label for="price_<?php echo $room['id']; ?>">Current Price: <?php echo number_format($room['price'], 2); ?>$</label><br>
-                <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
-                <input type="number" step="0.01" name="price" id="price_<?php echo $room['id']; ?>" value="<?php echo $room['price']; ?>" required>
+                <h3><?= htmlspecialchars($room['type']); ?></h3>
+                <label for="price_<?= $room['id']; ?>">Current Price: <?= number_format($room['price'], 2); ?>$</label><br>
+                <input type="hidden" name="room_id" value="<?= $room['id']; ?>">
+                <input type="number" step="0.01" name="price" id="price_<?= $room['id']; ?>" value="<?= $room['price']; ?>" required>
                 <button type="submit">Update Price</button>
             </form>
             <hr>
         <?php endforeach; ?>
 
-        <!-- Formulär för att uppdatera feature-priser -->
+        <!-- Update feature prices -->
         <h2>Update Feature Price</h2>
         <?php foreach ($features as $feature): ?>
             <form method="POST" action="admin.php">
-                <h3><?php echo htmlspecialchars($feature['name']); ?></h3>
-                <label for="feature_price_<?php echo $feature['id']; ?>">Current Price: <?php echo number_format($feature['price'], 2); ?>$</label><br>
-                <input type="hidden" name="feature_id" value="<?php echo $feature['id']; ?>">
-                <input type="number" step="0.01" name="feature_price" id="feature_price_<?php echo $feature['id']; ?>" value="<?php echo $feature['price']; ?>" required>
+                <h3><?= htmlspecialchars($feature['name']); ?></h3>
+                <label for="feature_price_<?= $feature['id']; ?>">Current Price: <?= number_format($feature['price'], 2); ?>$</label><br>
+                <input type="hidden" name="feature_id" value="<?= $feature['id']; ?>">
+                <input type="number" step="0.01" name="feature_price" id="feature_price_<?= $feature['id']; ?>" value="<?= $feature['price']; ?>" required>
                 <button type="submit">Update Price</button>
             </form>
             <hr>
         <?php endforeach; ?>
 
-        <!-- Formulär för att uppdatera rabatt -->
+        <!-- Update discount percentage -->
         <h2>Update Discount Percentage</h2>
         <form method="POST" action="admin.php">
-            <label for="discount_percentage">Current Discount: <?php echo htmlspecialchars($currentDiscount); ?>%</label><br>
-            <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?php echo htmlspecialchars($currentDiscount); ?>" required>
+            <label for="discount_percentage">Current Discount: <?= htmlspecialchars($currentDiscount); ?>%</label><br>
+            <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?= htmlspecialchars($currentDiscount); ?>" required>
             <button type="submit">Update Discount</button>
         </form>
 
+        <!-- Update hotel star rating -->
         <h2>Update Hotel Stars</h2>
         <form action="admin.php" method="POST">
             <label for="star_rating">Select Star Rating:</label>
@@ -174,18 +174,17 @@ $bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
             <button type="submit">Update Stars</button>
         </form>
 
-        <!-- Form to delete a booking -->
+        <!-- Delete a booking -->
         <h2>Remove Booking</h2>
-        <form method="POST" action="">
+        <form method="POST" action="admin.php">
             <label for="booking_id">Enter Booking ID to delete:</label>
             <input type="number" id="booking_id" name="booking_id" required placeholder="Booking ID">
             <button type="submit">Delete Booking</button>
         </form>
-
-
     </section>
 
     <section class="bookings">
+        <!-- Display all bookings -->
         <h1>Bookings</h1>
         <table border="1">
             <thead>
@@ -201,19 +200,16 @@ $bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
                 <?php foreach ($bookings as $booking): ?>
                     <tr>
-                        <td><?= htmlspecialchars($booking['id'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($booking['room_id'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($booking['guest_name'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($booking['check_in_date'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($booking['check_out_date'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($booking['transfer_code'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['id'] ?? ''); ?></td>
+                        <td><?= htmlspecialchars($booking['room_id'] ?? ''); ?></td>
+                        <td><?= htmlspecialchars($booking['guest_name'] ?? ''); ?></td>
+                        <td><?= htmlspecialchars($booking['check_in_date'] ?? ''); ?></td>
+                        <td><?= htmlspecialchars($booking['check_out_date'] ?? ''); ?></td>
+                        <td><?= htmlspecialchars($booking['transfer_code'] ?? ''); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <form method="POST" action="./logout.php">
-            <button type="submit">Log Out</button>
-        </form>
     </section>
 
 </body>

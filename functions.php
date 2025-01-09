@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/api/database.php';
+require_once __DIR__ . '/api/database.php'; // Include the database connection function
 
-$pdo = connect();
+$pdo = connect(); // Establish a database connection
 
+// Function to validate a transfer code
 function validateTransferCode(string $transferCode, float $totalCost): array
 {
     $url = 'https://www.yrgopelago.se/centralbank/transferCode';
@@ -42,6 +43,7 @@ function validateTransferCode(string $transferCode, float $totalCost): array
     return $decodedResponse;
 }
 
+// Function to consume a transfer code and deposit funds
 function consumeTransferCode(string $username, string $transferCode, int $numberOfDays): array
 {
     $url = 'https://www.yrgopelago.se/centralbank/deposit';
@@ -83,12 +85,12 @@ function consumeTransferCode(string $username, string $transferCode, int $number
     return $decodedResponse;
 }
 
-
+// Function to create a transfer code
 function createTransferCode(string $username, string $apiKey, float $amount): array
 {
-    // Kontrollera att API-nyckeln är en giltig UUID
+    // Validate that the API key is a valid UUID
     if (!isValidUUID($apiKey)) {
-        die("Ogiltig API-nyckel. Kontrollera att den är en UUID.");
+        die("Invalid API key. Please ensure it is a UUID.");
     }
 
     $url = 'https://www.yrgopelago.se/centralbank/withdraw';
@@ -126,13 +128,13 @@ function createTransferCode(string $username, string $apiKey, float $amount): ar
     return $decodedResponse;
 }
 
+// Function to validate a UUID format
 function isValidUUID(string $uuid): bool
 {
     return preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $uuid) === 1;
 }
 
-
-
+// Function to log API responses to the database
 function logApiResponse(PDO $pdo, string $endpoint, array $requestData, array $responseData): void
 {
     $stmt = $pdo->prepare("
@@ -146,6 +148,7 @@ function logApiResponse(PDO $pdo, string $endpoint, array $requestData, array $r
     ]);
 }
 
+// Function to fetch available rooms from the database
 function getAvailableRooms(PDO $pdo): array
 {
     try {
@@ -156,6 +159,7 @@ function getAvailableRooms(PDO $pdo): array
     }
 }
 
+// Function to fetch available features from the database
 function getAvailableFeatures(PDO $pdo): array
 {
     try {
@@ -166,13 +170,13 @@ function getAvailableFeatures(PDO $pdo): array
     }
 }
 
-// Hämta rum genom funktionen
+// Fetch rooms using the function
 $rooms = getAvailableRooms($pdo);
 
-// Hämta alla tillgängliga features
+// Fetch all available features
 $features = getAvailableFeatures($pdo);
 
-// Hämta rabattprocenten från databasen
+// Fetch the discount percentage from the database
 $stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
 $stmt->execute();
 $currentDiscount = (int)$stmt->fetchColumn();
