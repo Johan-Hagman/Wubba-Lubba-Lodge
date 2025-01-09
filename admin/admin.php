@@ -49,6 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $currentDiscount = $newDiscount; // Uppdatera lokalt för att visa det nya värdet direkt
         }
     }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['star_rating'])) {
+        $newRating = (int)$_POST['star_rating'];
+
+        if ($newRating >= 1 && $newRating <= 5) {
+            try {
+                $stmt = $pdo->prepare("UPDATE hotel_info SET stars = :stars WHERE id = 1");
+                $stmt->execute([':stars' => $newRating]);
+                echo "<p style='color: green;'>Rating updated to $newRating stars!</p>";
+            } catch (PDOException $e) {
+                echo "<p style='color: red;'>Database error: " . $e->getMessage() . "</p>";
+            }
+        } else {
+            echo "<p style='color: red;'>Rating must be between 1 and 5.</p>";
+        }
+    }
 }
 
 
@@ -65,9 +81,17 @@ $stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percent
 $stmt->execute();
 $currentDiscount = $stmt->fetchColumn();
 
+// Hämta nuvarande stjärnantal från databasen
+$stmt = $pdo->prepare("SELECT stars FROM hotel_info WHERE id = 1");
+$stmt->execute();
+$currentRating = $stmt->fetchColumn(); // Standardvärde för stjärnor
+
 // Hämta loggar från databasen
 $stmt = $pdo->query("SELECT * FROM api_logs ORDER BY created_at DESC");
 $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
 
 
@@ -115,6 +139,19 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <label for="discount_percentage">Current Discount: <?php echo htmlspecialchars($currentDiscount); ?>%</label><br>
             <input type="number" id="discount_percentage" name="discount_percentage" min="0" max="100" value="<?php echo htmlspecialchars($currentDiscount); ?>" required>
             <button type="submit">Update Discount</button>
+        </form>
+
+        <h2>Update Hotel Stars</h2>
+        <form action="admin.php" method="POST">
+            <label for="star_rating">Select Star Rating:</label>
+            <select name="star_rating" id="star_rating" required>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+            <button type="submit">Update Stars</button>
         </form>
 
     </section>
