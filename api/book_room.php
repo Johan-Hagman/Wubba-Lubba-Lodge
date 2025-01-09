@@ -171,7 +171,7 @@ if ($stmt->execute([
         "arrival_date" => $check_in_date,
         "departure_date" => $check_out_date,
         "total_cost" => "$" . $totalCost,
-        "stars" => "5",
+        "stars" => "$currentRating",
         "features" => $features,
         "additional_info" => [
             "greeting" => "Thank you for choosing Wubba Lubba Lodge",
