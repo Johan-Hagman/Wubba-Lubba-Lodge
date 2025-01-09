@@ -7,7 +7,7 @@ document
     const messageDiv = document.getElementById("message"); // Get the element to display messages
 
     try {
-      const response = await fetch("/../api/transfercode.php", {
+      const response = await fetch("./api/transfercode.php", {
         method: "POST", // Send data via POST method
         body: formData, // Include form data in the request body
       });
