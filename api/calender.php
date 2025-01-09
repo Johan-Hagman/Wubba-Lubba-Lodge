@@ -32,9 +32,10 @@ $roomDetails = [
            where coziness meets sophistication!',
     ],
     'luxury' => [
-        'image' => './assets/images/luxury-room.jpg',
-        'description' => 'Welcome to <b>The Reverie Throne</b>, where your imagination takes the wheel.
-         Yes, it’s just one chair—but sit down, relax, and choose your dreams… just don’t ask how it works.',
+        'image' => './assets/images/luxury-room.webp',
+        'description' => 'Ascend to the <b>Citadel Sky Suite</b>, where the multiverse meets ultimate luxury.
+         Gaze upon endless dimensions, enjoy futuristic comforts,
+         and feel like the Rickest Rick—without the burden of saving Mortys.',
     ],
 ];
 
