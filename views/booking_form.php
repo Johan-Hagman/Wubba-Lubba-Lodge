@@ -71,7 +71,7 @@
         <input type="text" id="apiKey" name="apiKey" required>
 
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step="0.01" required>
+        <input type="number" id="amount" name="amount" step="1" required>
 
         <button type="submit">Create transfercode</button>
 
