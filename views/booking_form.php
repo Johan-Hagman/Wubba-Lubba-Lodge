@@ -76,7 +76,7 @@
         <button type="submit">Create transfercode</button>
 
         <!-- Lägg till ett tomt meddelandeelement här -->
-        <div id="message" style="margin-top: 10px;"></div>
+        <div id="message"></div>
     </form>
 
     <div id="message"></div>
