@@ -96,6 +96,7 @@
   left: 20%; /* Offset to the left */
   transform: translateX(-50%);
   font-size: 3.2rem; /* Consistent typography */
+  padding: 2rem;
 }
 
 .cta-button:hover {
