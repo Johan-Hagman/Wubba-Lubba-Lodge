@@ -27,9 +27,6 @@ $stars = is_numeric($stars) ? (int)$stars : 0;
             <h1 class="header">WUBBA LUBBA LODGE</h1>
         </div>
 
-        <!-- Admin-knapp -->
-        <!-- <button onclick="location.href='./admin/login.php';">Rick's Hub</button> -->
-
     </nav>
 
 </header>

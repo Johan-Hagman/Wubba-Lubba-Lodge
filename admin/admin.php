@@ -111,10 +111,9 @@ $stmt = $pdo->prepare("SELECT stars FROM hotel_info WHERE id = 1");
 $stmt->execute();
 $currentRating = $stmt->fetchColumn(); // Standardvärde för stjärnor
 
-// Hämta loggar från databasen
-$stmt = $pdo->query("SELECT * FROM api_logs ORDER BY created_at DESC");
-$logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+// Hämta bokningar från databasen
+$bookingsStmt = $pdo->query("SELECT id, room_id, guest_name, check_in_date, check_out_date, transfer_code FROM bookings ORDER BY check_in_date DESC");
+$bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -186,38 +185,37 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </section>
 
-    <section class="api-logs">
-        <h1>API Logs</h1>
+    <section class="bookings">
+        <h1>Bookings</h1>
         <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Endpoint</th>
-                    <th>Request Data</th>
-                    <th>Response Data</th>
-                    <th>Created At</th>
+                    <th>Room ID</th>
+                    <th>Guest Name</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                    <th>Transfer Code</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($logs as $log): ?>
+                <?php foreach ($bookings as $booking): ?>
                     <tr>
-                        <td><?= htmlspecialchars($log['id'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($log['endpoint'] ?? '') ?></td>
-                        <td>
-                            <pre><?= htmlspecialchars($log['request_data'] ?? '') ?></pre>
-                        </td>
-                        <td>
-                            <pre><?= htmlspecialchars($log['response_data'] ?? '') ?></pre>
-                        </td>
-                        <td><?= htmlspecialchars($log['created_at'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['id'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['room_id'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['guest_name'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['check_in_date'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['check_out_date'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($booking['transfer_code'] ?? '') ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
         <form method="POST" action="./logout.php">
-            <button type="submit">Logga ut</button>
+            <button type="submit">Log Out</button>
         </form>
     </section>
+
 </body>
 
 </html>
