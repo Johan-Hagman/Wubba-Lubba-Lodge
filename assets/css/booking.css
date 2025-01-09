@@ -16,15 +16,17 @@
 
 .squanch-container {
   position: relative;
-  left: 5%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  overflow: hidden;
+  gap: 1rem;
 }
 
 .squanch-image {
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .speech-bubble {
@@ -37,7 +39,7 @@
   max-width: 20rem;
   font-size: 1.4rem;
   color: var(--text-color-dark);
-  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 .speech-bubble::before {
@@ -88,10 +90,23 @@
   background-color: var(--secondary-color);
 }
 
+.info p {
+  margin: 1rem;
+  font-size: 2.2rem;
+}
+
+.info h2 {
+  color: var(--text-color-dark);
+}
+
 .info img {
   width: 60%;
   height: 39.2rem;
   object-fit: cover;
+}
+
+.description {
+  text-align: center;
 }
 
 .calendar table {
@@ -116,8 +131,8 @@ form {
   border: 1rem solid var(--secondary-color);
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 25rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  width: 35rem;
   margin-bottom: 2rem;
   height: fit-content;
 }
@@ -127,7 +142,7 @@ form h2 {
   text-align: center;
   color: var(--secondary-color);
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: 0.1rem 0.1rem 0.2rem #000;
 }
 
 form label {

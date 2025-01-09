@@ -1,40 +1,4 @@
 /* ====================
-   Reviews Section Styles
-   ==================== */
-
-.reviews-section {
-  padding: 2rem;
-  text-align: center;
-  font-family: var(--font-family-main); /* Consistent typography */
-  background-color: var(--primary-color); /* Primary color background */
-  color: var(--text-color-light); /* Ensure text contrast */
-}
-
-.review-card {
-  background-color: var(--secondary-color); /* Use secondary color */
-  border-radius: 1.5rem; /* Rounded corners */
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  margin: 1.5rem auto;
-  max-width: 60rem; /* Responsive max width */
-  padding: 1.5rem;
-  text-align: left;
-}
-
-.review-text {
-  font-size: 1.6rem; /* Maintain readability */
-  font-style: italic;
-  margin-bottom: 1rem;
-  color: var(--text-color-dark); /* Darker text for contrast */
-}
-
-.review-author {
-  text-align: right;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--text-color-light); /* Light text for consistency */
-}
-
-/* ====================
    Footer Styles
    ==================== */
 

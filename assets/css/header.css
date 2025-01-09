@@ -17,7 +17,7 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background: var(--secondary-color);
   top: 0;
@@ -35,10 +35,10 @@
 }
 
 .logo {
-  height: 9rem;
+  height: 8rem;
   width: auto;
   border-radius: 50%;
-  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 0.4rem 0.1rem rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
 /* Stars Container */
@@ -97,7 +97,6 @@
   transform: translateX(-50%);
   font-size: 3.2rem; /* Consistent typography */
   height: 10rem; /* Consistent sizing */
-  width: 27.5rem; /* Consistent sizing */
 }
 
 .cta-button:hover {
