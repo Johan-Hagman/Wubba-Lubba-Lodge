@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is authenticated
 if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    header('Location: /users/login.php'); // Redirect user to login page
+    header('Location: ./login.php'); // Redirect user to login page
     exit;
 }
 
@@ -98,16 +98,6 @@ $rooms = $roomsStmt->fetchAll(PDO::FETCH_ASSOC);
 // Fetch all features with their prices
 $featuresStmt = $pdo->query("SELECT id, name, price FROM features");
 $features = $featuresStmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Fetch current discount from the database
-$stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
-$stmt->execute();
-$currentDiscount = $stmt->fetchColumn();
-
-// Fetch current star rating from the database
-$stmt = $pdo->prepare("SELECT stars FROM hotel_info WHERE id = 1");
-$stmt->execute();
-$currentRating = $stmt->fetchColumn();
 
 // Fetch bookings from the database
 $bookingsStmt = $pdo->query("SELECT id, room_id, guest_name, check_in_date, check_out_date, transfer_code FROM bookings ORDER BY check_in_date DESC");
@@ -211,6 +201,8 @@ $bookings = $bookingsStmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </section>
+
+    <button type="button" onclick="location.href='./logout.php';">Log out</button>
 
 </body>
 

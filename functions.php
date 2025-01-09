@@ -180,3 +180,8 @@ $features = getAvailableFeatures($pdo);
 $stmt = $pdo->prepare("SELECT value FROM settings WHERE name = 'discount_percentage'");
 $stmt->execute();
 $currentDiscount = (int)$stmt->fetchColumn();
+
+// Fetch current star rating from the database
+$stmt = $pdo->prepare("SELECT stars FROM hotel_info WHERE id = 1");
+$stmt->execute();
+$currentRating = $stmt->fetchColumn();
