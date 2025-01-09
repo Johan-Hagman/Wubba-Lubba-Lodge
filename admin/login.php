@@ -28,17 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../assets/css/login.css">
     <title>Admin Login</title>
+    <style>
+        body {
+            background: url(./../assets/images/security.webp);
+
+        }
+    </style>
 </head>
 
 <body>
-    <form method="POST">
-        <input type="text" name="api_key" placeholder="Enter your API Key" required>
-        <button type="submit">Login</button>
-        <button onclick="location.href='./../index.php';">Back to startpage</button>
-    </form>
-
+    <div class="container">
+        <form method="POST"><input type="text" name="api_key" placeholder="Enter your API Key" required><button type="submit">Login</button><button onclick="location.href='./../index.php';">Back to startpage</button></form>
+    </div>
 </body>
 
 </html>
