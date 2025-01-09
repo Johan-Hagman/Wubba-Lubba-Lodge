@@ -7,8 +7,7 @@
   text-align: center; /* Center the text */
   text-shadow: 0 0 1rem var(--primary-color), 0 0 2rem var(--primary-color),
     0 0 3rem var(--primary-color); /* Neon effect */
-  margin: 2rem 0; /* Space from other elements */
-  letter-spacing: 0.2rem; /* Add spacing between letters */
+  margin-top: 0.5rem;
 }
 
 /* ====================
@@ -17,7 +16,8 @@
 
 .navbar {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
   align-items: center;
   background: var(--secondary-color);
   top: 0;
@@ -96,7 +96,6 @@
   left: 20%; /* Offset to the left */
   transform: translateX(-50%);
   font-size: 3.2rem; /* Consistent typography */
-  height: 10rem; /* Consistent sizing */
 }
 
 .cta-button:hover {
