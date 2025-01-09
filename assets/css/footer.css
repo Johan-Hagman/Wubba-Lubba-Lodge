@@ -13,7 +13,7 @@
 .review-card {
   background-color: var(--secondary-color); /* Use secondary color */
   border-radius: 1.5rem; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); /* Subtle shadow */
   margin: 1.5rem auto;
   max-width: 60rem; /* Responsive max width */
   padding: 1.5rem;
@@ -44,7 +44,7 @@
   text-align: center;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
 .footer-content {

@@ -5,10 +5,10 @@
 /* Header Container */
 .header {
   text-align: center; /* Center the text */
-  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color),
-    0 0 30px var(--primary-color); /* Neon effect */
+  text-shadow: 0 0 1rem var(--primary-color), 0 0 2rem var(--primary-color),
+    0 0 3rem var(--primary-color); /* Neon effect */
   margin: 2rem 0; /* Space from other elements */
-  letter-spacing: 2px; /* Add spacing between letters */
+  letter-spacing: 0.2rem; /* Add spacing between letters */
 }
 
 /* ====================
@@ -24,7 +24,7 @@
   z-index: 1000;
   padding: 1rem;
   border-radius: 1rem 1rem 0 0; /* Rounded corners on the top */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
 /* Logo Container */
@@ -38,7 +38,7 @@
   height: 9rem;
   width: auto;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 /* Stars Container */
@@ -47,9 +47,10 @@
   justify-content: center;
   align-items: center;
   height: 10rem;
-  object-fit: cover;
+  gap: 0.5rem;
 }
 
+/* Stjärnor */
 .stars {
   width: 3rem; /* Consistent size using rem */
   height: auto;
@@ -82,7 +83,7 @@
   display: block;
   border-radius: 0 0 1rem 1rem; /* Rounded corners on the bottom */
   margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
 /* ====================

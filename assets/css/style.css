@@ -64,10 +64,10 @@ button {
   color: var(--text-color-light);
   border: none;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: 0.1rem 0.1rem 0.2rem #000;
 }
 
 button:hover {
