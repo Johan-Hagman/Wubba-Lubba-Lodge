@@ -6,7 +6,6 @@ require_once __DIR__ . '/api/database.php';
 
 $pdo = connect();
 
-
 function validateTransferCode(string $transferCode, float $totalCost): array
 {
     $url = 'https://www.yrgopelago.se/centralbank/transferCode';
