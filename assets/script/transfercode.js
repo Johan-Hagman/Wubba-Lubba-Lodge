@@ -7,7 +7,7 @@ document
     const messageDiv = document.getElementById("message"); // Hämta meddelandeelementet
 
     try {
-      const response = await fetch("/../api/transfer.php", {
+      const response = await fetch("/../api/transfercode.php", {
         method: "POST",
         body: formData,
       });
@@ -16,8 +16,7 @@ document
 
       if (response.ok) {
         // Visa transferkoden
-        messageDiv.innerHTML = `<p>Transfercode skapad: <strong>${result.transferCode}</strong></p>`;
-        messageDiv.style.color = "green"; // Sätt färg för framgång
+        messageDiv.innerHTML = `<p>Transfercode created: <strong>${result.transferCode}</strong></p>`;
       } else {
         // Visa felmeddelande
         messageDiv.innerHTML = `<p>Något gick fel: ${
