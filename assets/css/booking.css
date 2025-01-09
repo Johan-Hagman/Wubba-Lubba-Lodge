@@ -58,6 +58,7 @@
 .calendar-item {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row-reverse;
   margin-bottom: 2rem;
   padding: 1rem;
   border: 1px solid var(--secondary-color);
@@ -81,15 +82,16 @@
 .info {
   width: 60%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   gap: 1rem;
-  padding: 0 1rem 1rem 1rem;
+  padding-right: 1rem;
   background-color: var(--secondary-color);
 }
 
 .info img {
-  width: 50%;
-  height: auto;
+  width: 60%;
+  height: 39.2rem;
+  object-fit: cover;
 }
 
 .calendar table {
@@ -117,6 +119,7 @@ form {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   width: 25rem;
   margin-bottom: 2rem;
+  height: fit-content;
 }
 
 form h2 {
@@ -178,8 +181,5 @@ form p {
 /* Transfercode message */
 
 #message {
-  font-size: 14px;
-  padding: 5px;
   color: var(--text-color-light);
-  border-radius: 4px;
 }
