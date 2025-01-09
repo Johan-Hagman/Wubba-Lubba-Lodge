@@ -3,7 +3,7 @@
 <article class="booking">
     <div class="form-container">
         <!-- Formulär för att boka ett rum och välja features -->
-        <form action="./api/book_room.php" method="POST">
+        <form id="booking-form" action="./api/book_room.php" method="POST">
 
             <div class="form-header">
                 <h2>Book room</h2>
@@ -71,7 +71,7 @@
         <input type="text" id="apiKey" name="apiKey" required>
 
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step="1" required>
+        <input type="number" id="amount" name="amount" step="1" min="0" required>
 
         <button type="submit">Create transfercode</button>
 
@@ -80,8 +80,6 @@
     </form>
 
     <div id="message"></div>
-
-
 
     <div class="squanch-container">
         <div class="speech-bubble">
