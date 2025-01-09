@@ -28,7 +28,7 @@ $stars = is_numeric($stars) ? (int)$stars : 0;
         </div>
 
         <!-- Admin-knapp -->
-        <button onclick="location.href='./admin/login.php';">Rick's Hub</button>
+        <!-- <button onclick="location.href='./admin/login.php';">Rick's Hub</button> -->
 
     </nav>
 
