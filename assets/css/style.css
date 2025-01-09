@@ -63,7 +63,7 @@ button {
   background-color: var(--primary-color);
   color: var(--text-color-light);
   border: none;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0.8rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
