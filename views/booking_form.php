@@ -62,7 +62,7 @@
 
     <form id="transferForm">
         <div class="form-header">
-            <h2>Grab Your Cash</h2>
+            <h2>Multiverse Code Creator</h2>
         </div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -92,4 +92,5 @@
         </div>
         <img src="./assets/images/squanch-removebg-preview.png" alt="Squanch" class="squanch-image">
     </div>
+
 </article>
