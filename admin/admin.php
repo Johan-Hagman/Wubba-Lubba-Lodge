@@ -62,10 +62,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<p style='color: red;'>Database error: " . $e->getMessage() . "</p>";
             }
         } else {
-            echo "<p style='color: red;'>Rating must be between 1 and 5.</p>";
+            echo "<p style='color: red;'Rating must be between 1 and 5.</p>";
+        }
+    }
+
+    // Check if the form is submitted
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking_id'])) {
+        $bookingId = intval($_POST['booking_id']); // Retrieve and sanitize the input
+
+        // Check if booking_id is valid
+        if ($bookingId > 0) {
+            // Prepare the SQL query using PDO
+            $query = "DELETE FROM bookings WHERE id = :id";
+            $stmt = $pdo->prepare($query);
+
+            // Bind the parameter
+            $stmt->bindParam(':id', $bookingId, PDO::PARAM_INT);
+
+            // Execute the query and check the result
+            if ($stmt->execute()) {
+                echo "<p style='color: green;'>Booking with ID $bookingId was successfully deleted.</p>";
+            } else {
+                echo "<p style='color: red;'>Error: Could not delete the booking. Please try again.</p>";
+            }
+        } else {
+            echo "<p style='color: red;'>Please enter a valid Booking ID.</p>";
         }
     }
 }
+
 
 
 // Hämta alla rum med deras priser
@@ -90,11 +115,7 @@ $currentRating = $stmt->fetchColumn(); // Standardvärde för stjärnor
 $stmt = $pdo->query("SELECT * FROM api_logs ORDER BY created_at DESC");
 $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -153,6 +174,15 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </select>
             <button type="submit">Update Stars</button>
         </form>
+
+        <!-- Form to delete a booking -->
+        <h2>Remove Booking</h2>
+        <form method="POST" action="">
+            <label for="booking_id">Enter Booking ID to delete:</label>
+            <input type="number" id="booking_id" name="booking_id" required placeholder="Booking ID">
+            <button type="submit">Delete Booking</button>
+        </form>
+
 
     </section>
 
