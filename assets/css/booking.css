@@ -143,7 +143,7 @@ form input,
 form select {
   width: 100%;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
   border: 0.1rem solid #dddddd;
   border-radius: 0.8rem;
