@@ -20,12 +20,14 @@ if (!$calendarRooms) {
 $roomDetails = [
     'budget' => [
         'image' => './assets/images/budget-room.jpg',
+        'title' => 'Rick’s Rusty Garage',
         'description' => 'Welcome to <b>Rick’s Rusty Garage</b>, the ultimate budget-friendly crash pad where scrap parts
          and ‘borrowed’ tech create a rugged, interdimensional vibe. It’s the perfect no-frills spot for adventurers
           who don’t mind a little grease with their comfort!',
     ],
     'standard' => [
         'image' => './assets/images/standard-room.jpg',
+        'title' => 'Rick’s Cozy Retreat',
         'description' => 'Tucked away in the heart of the multiverse,
          <b>Rick’s Cozy Retreat</b> is a warm escape from interdimensional chaos,
           featuring plush furnishings and soft lighting. It’s the perfect spot to unwind in style,
@@ -33,6 +35,7 @@ $roomDetails = [
     ],
     'luxury' => [
         'image' => './assets/images/luxury-room.webp',
+        'title' => 'Citadel Sky Suite',
         'description' => 'Ascend to the <b>Citadel Sky Suite</b>, where the multiverse meets ultimate luxury.
          Gaze upon endless dimensions, enjoy futuristic comforts,
          and feel like the Rickest Rick—without the burden of saving Mortys.',
@@ -96,6 +99,7 @@ foreach ($calendarRooms as $room) {
     // Hämta bild och beskrivning baserat på rummets namn
     $image = $roomDetails[$roomName]['image'] ?? 'path/to/default-room.jpg';
     $description = $roomDetails[$roomName]['description'] ?? 'No description available.';
+    $title = $roomDetails[$roomName]['title'] ?? 'Room';
 
     // Visa kalender, bild och beskrivning
     echo "<div class='calendar-item'>";
@@ -105,7 +109,9 @@ foreach ($calendarRooms as $room) {
     echo "</div>";
     echo "<div class='info'>";
     echo "<img src='$image' alt='$roomName' />"; // Visa bild på rummet
-    echo "<p>$description</p>"; // Visa beskrivning
+    echo "<div class='description'>";
+    echo "<h2>$title</h2><p>$description</p>";
+    echo "</div>";
     echo "</div>";
     echo "</div>";
 }
