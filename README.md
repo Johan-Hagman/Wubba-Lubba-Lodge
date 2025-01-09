@@ -96,6 +96,15 @@ CREATE TABLE settings (
     value VARCHAR(255) NOT NULL
 );
 
+-- Table for hotel information
+CREATE TABLE hotel_info (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT NOT NULL,                   
+    stars INTEGER NOT NULL,               
+    description TEXT                      
+);
+
+
 
 ## Usage
 Homepage: Explore the hotel with its Rick and Morty-inspired design.
