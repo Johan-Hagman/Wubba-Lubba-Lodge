@@ -96,7 +96,7 @@
 }
 
 .info h2 {
-  color: var(--text-color-dark);
+  color: var(--alternative-color);
 }
 
 .info img {
