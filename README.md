@@ -119,4 +119,19 @@ Design: School project under the Yrgopelago initiative.
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
+## Feedback
+
+Functions.php:180-187 - might want to change the $stmt variables for query for easier understanding.
+
+booking_form.php:16-18 - maybe assign htmlspecialchars($room['type']) to a $roomType variable for example just to make it easier to reuse.
+
+header.php:18 - try not to mix php and html code.
+
+style.css:36-73 - inline styling is not recommended consider using classes instead.
+
+transfercode.js:19-29 - .innerHTML can be risky in terms of security and performance might want to use .textContent instead.
+
+database.php:10 - might want to hide your database in a .env file so that no hackers can get information about your guests for example.
+
+Book_room.php:162-164 - using bindParam instead of an array in the execute function might give a more type accurate INSERT. (Optional)
 
